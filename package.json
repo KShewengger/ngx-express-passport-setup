@@ -1,0 +1,42 @@
+{
+  "name": "ng4-express-passport-setup",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "ng-start": "cd ./public/passport && tsc && npm start",
+    "express-start": "tsc-watch --onSuccess 'nodemon ./bin/www'",
+    "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "mysql": "^2.15.0",
+    "serve-favicon": "~2.4.2",
+    "ts-node": "^6.0.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.4",
+    "@babel/cli": "^7.0.0-beta.45",
+    "@babel/core": "^7.0.0-beta.45",
+    "@babel/node": "^7.0.0-beta.45",
+    "@babel/preset-env": "^7.0.0-beta.45",
+    "@babel/preset-typescript": "^7.0.0-beta.45",
+    "@babel/register": "^7.0.0-beta.45",
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/express": "^4.11.1",
+    "@types/jasmine": "^2.8.7",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^7.0.60",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
+    "tsc-watch": "^1.0.21",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1",
+    "typescript-register": "^1.1.0"
+  }
+}
