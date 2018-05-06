@@ -5,5 +5,5 @@ An express passport setup for authentication via gmail
 
 
 #### Main dev tools used:
-`Angular 4` `NodeJS` `ExpressJS` `PassportJS`
+`Angular 5` `NodeJS` `ExpressJS` `PassportJS`
 
