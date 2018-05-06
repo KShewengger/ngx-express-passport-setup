@@ -2,9 +2,9 @@ import { Component } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: [ "./app.component.css" ]
+  selector: "passport-app",
+  template: `
+    <router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = "app";
