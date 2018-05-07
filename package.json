@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "ng-start": "cd ./public/passport && tsc && npm start",
+    "ng-start": "cd ./public/passport-app && tsc && npm start",
     "express-start": "tsc-watch --onSuccess 'nodemon ./bin/www'",
     "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
   },

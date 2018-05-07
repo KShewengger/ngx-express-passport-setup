@@ -1,0 +1,83 @@
+/* Container */
+.row > div {
+    background-color: white;
+    padding: 70px;
+    padding-bottom: 90px;
+    border-radius: 5px;
+}
+
+.container-vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Typography */
+h2, p {
+    color: #565252;
+}
+
+h2 {
+    margin-bottom: 0;
+    display: inline-block;
+}
+
+p {
+    font-size: 13px;
+}
+
+hr {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+    border-color: #e8e8e8;
+    margin-bottom: 8px;
+}
+
+/* Icons */
+i.material-icons {
+    color: #6d6868;
+    font-size: 27px;
+    position: relative;
+    top: 3px;
+}
+
+/* Input */
+input {
+    border-radius: 0;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Raleway-Medium', 'sans-serif';
+}
+
+/* Buttons */
+button, button:hover, btn-primary.disabled {
+    background-color: #EB6469 !important;
+    border-color: #EB6469 !important;
+}
+
+/* Footer - Social Links */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: whitesmoke;
+    left: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.footer > p {
+    padding: 0 30px;
+    position: relative;
+    top: 7px;
+}
+
+.footer span {
+    margin-left: 15px;
+}
+
+.footer fa {
+    padding-right: 10px;
+}

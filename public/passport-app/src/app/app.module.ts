@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 
+import { AngularFontAwesomeModule } from "angular-font-awesome";
+
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 
@@ -18,6 +20,7 @@ import { AppRouting } from "./app-routing.module";
     BrowserModule,
     HttpClientModule,
     RouterModule,
+    AngularFontAwesomeModule,
     AppRouting
   ],
   providers: [],
