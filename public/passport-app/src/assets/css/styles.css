@@ -38,3 +38,18 @@ a:hover {
   color: #EB6469;
   text-decoration: none;
 }
+
+/* Container */
+.center-container {
+  background-color: white;
+  padding: 70px;
+  padding-bottom: 90px;
+  border-radius: 5px;
+}
+
+.container-vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}

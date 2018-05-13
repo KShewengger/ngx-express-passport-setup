@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent {
 
   isSigning: boolean = false;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
 
@@ -20,5 +21,6 @@ export class LoginComponent {
     evt.preventDefault();
 
     this.isSigning = true;
+    this.router.navigate([ "home" ]);
   }
 }
