@@ -15,10 +15,14 @@ import * as config from "./config/passport";
 config.initializeGoogleStrategy(passport);
 
 export const Passport = passport;
+const cors = require("cors");
+const session = require("express-session");
+
+require("dotenv").config();
 
 // Api Routes
 import { indexRoutes } from "./routes/index";
-import { authRoutes } from "./routes/auth";
+import { authRoutes } from "./routes/auth/index";
 
 export class Server {
   public app: express.Application;
@@ -38,13 +42,7 @@ export class Server {
   private middlewares(): void {
     // this.app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
-    this.app.use(function (req: Request, res: Response, next: NextFunction) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-      next();
-    });
+    this.app.use(cors({ credentials: true, origin: true }));
 
     this.app.use(logger("dev"));
     this.app.use(bodyParser.json());
@@ -52,6 +50,7 @@ export class Server {
     this.app.use(cookieParser());
     this.app.use(express.static(path.join(__dirname, "public")));
 
+    this.app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   }
@@ -73,8 +72,7 @@ export class Server {
       res.locals.error = req.app.get("env") === "development" ? err : {};
 
       // render the error page
-      res.status(statusCode);
-      res.send("Server Error", statusCode);
+      res.status(statusCode).send("Server Error");
     });
   }
 

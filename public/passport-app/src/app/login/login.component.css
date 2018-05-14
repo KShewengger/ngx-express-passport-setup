@@ -28,18 +28,9 @@ i.material-icons {
     top: 3px;
 }
 
-/* Input */
-input {
-    border-radius: 0;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-family: 'Raleway-Medium', 'sans-serif';
-}
-
-/* Buttons */
-button, button:hover, btn-primary.disabled {
-    background-color: #EB6469 !important;
-    border-color: #EB6469 !important;
+/* Container */
+.center-container {
+  padding-bottom: 95px;
 }
 
 /* Footer - Social Links */
