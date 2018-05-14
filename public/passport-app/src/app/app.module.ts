@@ -9,10 +9,11 @@ import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
+import { InitializeComponent } from "./initialize/initialize.component";
 
-import { HomeService } from "./home/home.service";
+import { AppService } from "./app.service";
 
-import { UserResolver } from "./home/home-resolver.service";
+import { InitializeResolverService } from "./initialize/initialize-resolver.service";
 
 import { AppRouting } from "./app-routing.module";
 
@@ -21,7 +22,8 @@ import { AppRouting } from "./app-routing.module";
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    InitializeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +34,8 @@ import { AppRouting } from "./app-routing.module";
     AppRouting
   ],
   providers: [
-    HomeService,
-    UserResolver,
+    AppService,
+    InitializeResolverService,
     { provide: "API_URL", useValue: "http://localhost:3000" },
   ],
   bootstrap: [ AppComponent ]

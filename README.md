@@ -9,5 +9,5 @@ An express passport setup for authentication via gmail
 
 
 #### Supported Passport Authentication
-`Facebook` `Google+` `Twitter`
+`Facebook` `Google+` `Twitter` `Local`
 

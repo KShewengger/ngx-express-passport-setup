@@ -12,7 +12,7 @@ const frontEndOriginUrl = process.env.FRONTEND_URL;
 router.get("/google", Passport.authenticate("google", { scope: [ "profile", "email" ] }));
 
 router.get("/google/callback", Passport.authenticate("google", {
-  successRedirect: `${frontEndOriginUrl}/home`,
+  successRedirect: `${frontEndOriginUrl}/initialize`,
   failureRedirect: "/"
 }));
 

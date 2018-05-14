@@ -2,16 +2,24 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
+import { InitializeComponent } from "./initialize/initialize.component";
 
-import { UserResolver } from "./home/home-resolver.service";
+import { InitializeResolverService } from "./initialize/initialize-resolver.service";
 
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  {
+    path: "",
+    component: LoginComponent
+  },
+  {
+    path: "initialize",
+    component: InitializeComponent,
+    resolve: { user: InitializeResolverService }
+  },
   {
     path: "home",
-    component: HomeComponent,
-    resolve: { user: UserResolver }
+    component: HomeComponent
   }
 ];
 

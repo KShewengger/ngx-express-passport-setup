@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { HomeService } from "./home.service";
+import { AppService } from "../app.service";
 
 
 @Component({
@@ -15,10 +15,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private homeService: HomeService) {}
+              private homeService: AppService) {}
 
   ngOnInit() {
-    this.user = this.route.snapshot.data.user;
+    const userInfo = localStorage.getItem("user");
+    this.user = JSON.parse(userInfo);
   }
 
   signOut(): void {
