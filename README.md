@@ -1,4 +1,4 @@
-# ng4-express-passport-setup
+# ngx-express-passport-setup
 
 
 An express passport setup for authentication via gmail
