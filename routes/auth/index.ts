@@ -3,7 +3,7 @@
 import { Router } from "express";
 
 import { Passport } from "../../server";
-import * as authApi from "./auth";
+import * as authApi from "./auth-api";
 
 const router: Router = Router();
 const frontEndOriginUrl = process.env.FRONTEND_URL;
