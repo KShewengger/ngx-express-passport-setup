@@ -11,9 +11,9 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { InitializeComponent } from "./initialize/initialize.component";
 
-import { AppService } from "./app.service";
+import { AuthService } from "./auth.service";
 
-import { InitializeResolverService } from "./initialize/initialize-resolver.service";
+import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 
 import { AppRouting } from "./app-routing.module";
 
@@ -34,8 +34,8 @@ import { AppRouting } from "./app-routing.module";
     AppRouting
   ],
   providers: [
-    AppService,
-    InitializeResolverService,
+    AuthService,
+    UserInitializeResolver,
     { provide: "API_URL", useValue: "http://localhost:3000" },
   ],
   bootstrap: [ AppComponent ]
