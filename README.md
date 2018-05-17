@@ -1,11 +1,11 @@
-# ng4-express-passport-setup
+# ngx-express-passport-setup
 
 
 An express passport setup for authentication via gmail
 
 
 #### Main dev tools used:
-`Angular 5` `NodeJS` `ExpressJS` `PassportJS` `MongoDB`
+`Angular 5` `NodeJS` `ExpressJS` `PassportJS` `PostgreSQL` `SequelizeJS`
 
 
 #### Supported Passport Authentication

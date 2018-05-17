@@ -4,7 +4,7 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { InitializeComponent } from "./initialize/initialize.component";
 
-import { InitializeResolverService } from "./initialize/initialize-resolver.service";
+import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: "initialize",
     component: InitializeComponent,
-    resolve: { user: InitializeResolverService }
+    resolve: { user: UserInitializeResolver }
   },
   {
     path: "home",
