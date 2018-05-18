@@ -47,7 +47,7 @@ export class Server {
 
     this.app.use(logger("dev"));
     this.app.use(bodyParser.json());
-    this.app.use(bodyParser.urlencoded({extended: false}));
+    this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(cookieParser());
     this.app.use(express.static(path.join(__dirname, "public")));
 
@@ -80,11 +80,13 @@ export class Server {
   private checkDbConnection(): void {
     const dbConfig = db.development;
     const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
-      dialect: dbConfig.dialect,
+      dialect         : dbConfig.dialect,
       operatorsAliases: false
     });
 
-    sequelize.authenticate().then(() => console.log("Database connection is set.")).catch(err => console.error("Unable to connect to the database", err));
+    sequelize.authenticate()
+      .then(() => console.log("Database connection is set."))
+      .catch(err => console.error("Unable to connect to the database", err));
   }
 
   private routes(): void {

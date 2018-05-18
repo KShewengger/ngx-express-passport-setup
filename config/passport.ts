@@ -23,10 +23,7 @@ export function initializeGoogleStrategy(passport: passport.PassportStatic) {
       callbackURL: googleKeys.callbackUrl,
     },
     (accessToken, refreshToken, profile, done) => {
-      process.nextTick(() => {
-
-        return done(null, profile);
-      });
+      process.nextTick(() => done(null, profile));
     }
   ));
 }
