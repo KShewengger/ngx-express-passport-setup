@@ -1,6 +1,5 @@
 "use strict";
 
-import { Request, Response, NextFunction } from "express";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as express from "express";
@@ -8,11 +7,12 @@ import * as logger from "morgan";
 import * as path from "path";
 import * as favicon from "serve-favicon";
 import * as passport from "passport";
+import * as Sequelize from "sequelize";
 
 // Passport Configuration
-import * as config from "./config/passport";
+import { initializeGoogleStrategy, db } from "./config/index";
 
-config.initializeGoogleStrategy(passport);
+initializeGoogleStrategy(passport);
 
 export const Passport = passport;
 const cors = require("cors");
@@ -37,6 +37,7 @@ export class Server {
     this.middlewares();
     this.routes();
     this.catchErrors();
+    this.checkDbConnection();
   }
 
   private middlewares(): void {
@@ -74,6 +75,16 @@ export class Server {
       // render the error page
       res.status(statusCode).send("Server Error");
     });
+  }
+
+  private checkDbConnection(): void {
+    const dbConfig = db.development;
+    const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+      dialect: dbConfig.dialect,
+      operatorsAliases: false
+    });
+
+    sequelize.authenticate().then(() => console.log("Database connection is set.")).catch(err => console.error("Unable to connect to the database", err));
   }
 
   private routes(): void {

@@ -1,7 +1,7 @@
 import * as passportGoogleAuth from "passport-google-oauth";
 import * as passport from "passport";
 
-import { keys } from "./keys";
+import { default as keys } from "./keys";
 
 const googleKeys = keys.google;
 const GoogleStrategy = passportGoogleAuth.OAuth2Strategy;
