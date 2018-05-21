@@ -7,7 +7,7 @@ import * as logger from "morgan";
 import * as path from "path";
 import * as favicon from "serve-favicon";
 import * as passport from "passport";
-import { sequelize } from "./models/index";
+import { sequelize } from "./models/-index";
 
 // Passport Configuration
 import { initializeGoogleStrategy } from "./config/passport";
@@ -22,7 +22,7 @@ require("dotenv").config();
 
 // Api Routes
 import { indexRoutes } from "./routes/index";
-import { authRoutes } from "./routes/auth/index";
+import { authRoutes } from "./routes/auth/-index";
 
 export class Server {
   public app: express.Application;

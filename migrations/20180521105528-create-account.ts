@@ -15,7 +15,8 @@ export async function up(queryInterface: QueryInterface, Sequelize: DataTypes) {
     },
     provider_id: {
       type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4
+      defaultValue: Sequelize.UUIDV4,
+      references: { model: "provider", key: "id" }
     },
     first_name: {
       type: Sequelize.STRING

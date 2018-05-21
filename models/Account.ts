@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType, IsEmail, PrimaryKey, IsUUID } from "sequelize-typescript";
+import { Table, Column, Model, ForeignKey, DataType, IsEmail, PrimaryKey, IsUUID } from "sequelize-typescript";
+import { Provider } from "./Provider";
 
 
 @Table({
@@ -13,6 +14,7 @@ export class Account extends Model<Account> {
   id: string;
 
   @IsUUID(4)
+  @ForeignKey(() => Provider)
   @Column(DataType.UUID)
   provider_id: string;
 
