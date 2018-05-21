@@ -20,16 +20,5 @@ const sequelize = new Sequelize({
 
 sequelize.addModels([ Account, Provider ]);
 
-Account.create({
-  id: "0c5569d3-3d3a-4d96-8e8a-6453da647b3d",
-  provider_id: "23b5cb15-ef0d-4178-a8c3-3480f2f46555",
-  first_name: "Kristy",
-  last_name: "Almuete",
-  email: "kristyalmuete@gmail.com",
-  gender: "f",
-})
-.then(user => console.log("Successfully created user"))
-.catch(err => console.error(err))
-.finally(process.exit);
 
 export { sequelize, Sequelize };
