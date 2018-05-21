@@ -7,10 +7,10 @@ import * as logger from "morgan";
 import * as path from "path";
 import * as favicon from "serve-favicon";
 import * as passport from "passport";
-import * as Sequelize from "sequelize";
+import { sequelize } from "./models/index";
 
 // Passport Configuration
-import { initializeGoogleStrategy, db } from "./config/index";
+import { initializeGoogleStrategy } from "./config/passport";
 
 initializeGoogleStrategy(passport);
 
@@ -77,13 +77,7 @@ export class Server {
     });
   }
 
-  private checkDbConnection(): void {
-    const dbConfig = db.development;
-    const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
-      dialect         : dbConfig.dialect,
-      operatorsAliases: false
-    });
-
+  private checkDbConnection() {
     sequelize.authenticate()
       .then(() => console.log("Database connection is set."))
       .catch(err => console.error("Unable to connect to the database", err));

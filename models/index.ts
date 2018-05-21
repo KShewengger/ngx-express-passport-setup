@@ -1,29 +1,22 @@
 "use strict";
 
-import * as fs from "fs";
-import * as path from "path";
-import * as Sequelize from "sequelize";
-import { db as config } from "../config/index";
+import { Sequelize } from "sequelize-typescript";
 
-const basename = path.basename(module.filename);
-const dbConfig = config.development;
-const db: any = {};
+import { Account } from "./Account";
 
-const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
+import * as config from "../config/config";
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js"))
-  .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[ model.name ] = model;
-  });
+const db = config.default.development;
 
-Object.keys(db).forEach(modelName => {
-  if (db[ modelName ].associate) db[ modelName ].associate(db);
+const sequelize = new Sequelize({
+  database: db.database,
+  dialect: db.dialect,
+  username: db.username,
+  password: db.password,
+  operatorsAliases: false
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+sequelize.addModels([ Account ]);
 
-module.exports = db;
+
+export { sequelize, Sequelize };

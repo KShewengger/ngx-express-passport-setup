@@ -1,14 +1,13 @@
 import * as passportGoogleAuth from "passport-google-oauth";
 import * as passport from "passport";
 
-import { default as keys } from "./keys";
+import * as config from "./config";
 
-const googleKeys = keys.google;
+const googleKeys = config.default.google;
 const GoogleStrategy = passportGoogleAuth.OAuth2Strategy;
 
 
 export function initializeGoogleStrategy(passport: passport.PassportStatic) {
-
   passport.serializeUser((user, done) => {
     done(null, user);
   });

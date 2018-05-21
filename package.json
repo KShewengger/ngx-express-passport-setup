@@ -22,8 +22,10 @@
     "passport-google-oauth": "^1.0.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "reflect-metadata": "^0.1.12",
     "sequelize": "^4.37.7",
     "sequelize-cli": "^4.0.0",
+    "sequelize-typescript": "^1.0.0-alpha.3",
     "serve-favicon": "~2.4.2",
     "ts-node": "^6.0.0"
   },
