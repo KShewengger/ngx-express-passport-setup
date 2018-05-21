@@ -5,7 +5,7 @@ An angular & node express setup for passport authentication
 
 
 #### Main dev tools used:
-`Angular 5` `NodeJS` `ExpressJS` `PassportJS` `PostgreSQL` `SequelizeJS`
+`Angular 5` `NodeJS` `ExpressJS` `Typescript` `ES6` `PassportJS` `PostgreSQL` `SequelizeJS` `Sequelize-Typescript`
 
 
 #### Supported Passport Authentication
