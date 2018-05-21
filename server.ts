@@ -7,22 +7,19 @@ import * as logger from "morgan";
 import * as path from "path";
 import * as favicon from "serve-favicon";
 import * as passport from "passport";
+
+import * as strategy from "./config/passport";
 import { sequelize } from "./models/-index";
 
-// Passport Configuration
-import { initializeGoogleStrategy } from "./config/passport";
-
-initializeGoogleStrategy(passport);
-
 export const Passport = passport;
+
 const cors = require("cors");
 const session = require("express-session");
+const dotenv = require("dotenv").config();
 
-require("dotenv").config();
-
-// Api Routes
 import { indexRoutes } from "./routes/index";
 import { authRoutes } from "./routes/auth/-index";
+
 
 export class Server {
   public app: express.Application;
@@ -35,11 +32,15 @@ export class Server {
     this.app = express();
 
     this.middlewares();
+    this.initializeStrategies();
     this.routes();
     this.catchErrors();
     this.checkDbConnection();
   }
-
+  
+  /**
+   * Middlewares
+   */
   private middlewares(): void {
     // this.app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
@@ -55,9 +56,11 @@ export class Server {
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   }
-
+  
+  /**
+   * Error Handlers
+   */
   private catchErrors(): void {
-    // catch 404 and forward to error handler
     this.app.use((req: any, res: any, next: any) => {
       const err: any = new Error("Not Found");
       err.status = 404;
@@ -65,24 +68,35 @@ export class Server {
       next(err);
     });
 
-    // error handler
     this.app.use((err: any, req: any, res: any, next: any) => {
       const statusCode = err.status || 500;
 
       res.locals.message = err.message;
       res.locals.error = req.app.get("env") === "development" ? err : {};
 
-      // render the error page
       res.status(statusCode).send("Server Error");
     });
   }
-
-  private checkDbConnection() {
+  
+  /**
+   * Initialize Passport Strategies
+   */
+  private initializeStrategies(): void {
+    strategy.initializeGoogleStrategy(passport);
+  }
+  
+  /**
+   * Authenticate DB Connection
+   */
+  private checkDbConnection(): void {
     sequelize.authenticate()
       .then(() => console.log("Database connection is set."))
       .catch(err => console.error("Unable to connect to the database", err));
   }
-
+  
+  /**
+   * Assign API Routes
+   */
   private routes(): void {
     this.app.use("/", indexRoutes);
     this.app.use("/auth", authRoutes);
