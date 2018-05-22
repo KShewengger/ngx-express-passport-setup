@@ -1,3 +1,5 @@
+const db = require("./config").development;
+
 export interface DatabaseConfig {
   username: string;
   password: string;
@@ -8,10 +10,10 @@ export interface DatabaseConfig {
 }
 
 export const databaseConfig: DatabaseConfig = {
-  "username": null,
-  "password": null,
-  "database": "passport",
-  "host": "127.0.0.1",
-  "port": 5432,
-  "dialect": "postgres"
+  "username": db.username,
+  "password": db.password,
+  "database": db.database,
+  "host": db.host,
+  "port": db.port,
+  "dialect": db.dialect
 };
