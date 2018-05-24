@@ -8,14 +8,12 @@ import { Provider } from "./Provider";
 })
 export class Account extends Model<Account> {
 
-  @IsUUID(4)
   @PrimaryKey
-  @Column(DataType.UUID)
+  @Column(DataType.STRING)
   id: string;
 
-  @IsUUID(4)
   @ForeignKey(() => Provider)
-  @Column(DataType.UUID)
+  @Column(DataType.INTEGER)
   provider_id: string;
 
   @Column(DataType.STRING)

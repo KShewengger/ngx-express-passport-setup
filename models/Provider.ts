@@ -7,11 +7,10 @@ import { Account } from "./Account";
 })
 export class Provider extends Model<Provider> {
   
-  @IsUUID(4)
   @PrimaryKey
   @ForeignKey(() => Account)
-  @Column(DataType.UUID)
-  id: string;
+  @Column(DataType.INTEGER)
+  id: number;
   
   @Column(DataType.STRING)
   name: string;

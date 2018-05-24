@@ -10,12 +10,10 @@ export async function up(queryInterface: QueryInterface, Sequelize: DataTypes) {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4
+      type: Sequelize.STRING,
     },
     provider_id: {
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4,
+      type: Sequelize.INTEGER,
       references: { model: "provider", key: "id" }
     },
     first_name: {

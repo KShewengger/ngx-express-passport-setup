@@ -5,6 +5,9 @@
   "scripts": {
     "ng-start": "cd ./public/passport-app && tsc && npm start",
     "express-start": "tsc-watch --onSuccess 'nodemon ./bin/www'",
+    "sq:migrate": "sequelize db:migrate",
+    "sq:migrate:undo": "sequelize db:migrate:undo",
+    "sq:migrate:undo:all": "sequelize db:migrate:undo:all",
     "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
   },
   "dependencies": {
