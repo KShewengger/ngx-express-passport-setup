@@ -17,7 +17,7 @@ const cors = require("cors");
 const session = require("express-session");
 const dotenv = require("dotenv").config();
 
-import { indexRoutes } from "./routes/index";
+import { indexRoute } from "./routes/index";
 import { authRoutes } from "./routes/auth/-index";
 
 
@@ -98,7 +98,7 @@ export class Server {
    * Assign API Routes
    */
   private routes(): void {
-    this.app.use("/", indexRoutes);
+    this.app.use("/", indexRoute);
     this.app.use("/auth", authRoutes);
   }
 }

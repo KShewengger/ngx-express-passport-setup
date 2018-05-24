@@ -4,16 +4,16 @@ import * as passport from "passport";
 import { config } from "./-index";
 import { Account } from "../models/Account";
 import { Provider } from "../models/Provider";
-import { Func } from "continuation-local-storage";
 
 const google = config.getGoogleCredentials();
 const GoogleStrategy = passportGoogleAuth.OAuth2Strategy;
 
 /**
+ * @description Initializes Google Strategy with the credentials passed.
  *
  * @param {passport.PassportStatic} passport
  */
-export function initializeGoogleStrategy(passport: passport.PassportStatic) {
+export function initializeGoogleStrategy(passport: passport.PassportStatic): void {
   passport.serializeUser((user: any, done) => {
     done(null, user.id);
   });
@@ -43,6 +43,7 @@ export function initializeGoogleStrategy(passport: passport.PassportStatic) {
 }
 
 /**
+ * @description Creates new user.
  *
  * @param user
  * @param done
@@ -58,11 +59,12 @@ async function createUser(user: any, done: Function): Promise<any> {
 }
 
 /**
+ * @description Get Provider Id (Google, Twitter, LinkedIn, Local)
  *
- * @param {string} provider
+ * @param {String} provider
  * @returns {Promise<any>}
  */
-async function fetchProviderId(provider: string): Promise<any> {
+async function getProviderId(provider: string): Promise<any> {
   return await Provider
   .findOne({ where: { name: provider } })
   .then(provider => provider.id)
@@ -70,12 +72,13 @@ async function fetchProviderId(provider: string): Promise<any> {
 }
 
 /**
+ * @description Initializes User Account with the given set of object.
  *
- * @param user
+ * @param {Any} user
  * @returns {any}
  */
 async function initializeNewUserAccount(user: any): Promise<any> {
-  const providerId = await fetchProviderId(user.provider);
+  const providerId = await getProviderId(user.provider);
   
   return {
     id: user.id,

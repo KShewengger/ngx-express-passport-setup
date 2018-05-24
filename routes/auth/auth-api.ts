@@ -1,14 +1,15 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 
 const frontEndOriginUrl = process.env.FRONTEND_URL;
 
 /**
+ * @api /auth/user
+ * @description Get user information.
  *
- * @param {e.Request} req
- * @param {e.Response} res
- * @param {e.NextFunction} next
+ * @param {Request} req
+ * @param {Response} res
  */
-export function getUserProfile(req: Request, res: Response, next: NextFunction) {
+export function getUser(req: Request, res: Response): void {
   if (req.isAuthenticated()) {
     const { id, first_name: firstName, last_name: lastName, email, gender, provider_id: providerId } = req.user;
     const user = { id, firstName, lastName, email, gender, providerId };
@@ -19,12 +20,13 @@ export function getUserProfile(req: Request, res: Response, next: NextFunction) 
 }
 
 /**
+ * @api /auth/logout
+ * @description Log Out user.
  *
  * @param {e.Request} req
  * @param {e.Response} res
- * @param {e.NextFunction} next
  */
-export function logout(req: Request, res: Response, next: NextFunction) {
+export function logout(req: Request, res: Response): void {
   req.logOut();
   res.json(1);
 }
