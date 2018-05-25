@@ -5,7 +5,7 @@ const frontEndOriginUrl = process.env.FRONTEND_URL;
 
 /**
  * @api /auth/user
- * @description Get user information.
+ * @description Get user's information.
  *
  * @param {Request} req
  * @param {Response} res

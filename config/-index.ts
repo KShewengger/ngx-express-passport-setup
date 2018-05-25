@@ -1,5 +1,5 @@
-import { DatabaseConfig, databaseConfig } from "./database";
-import { StrategyCredentials, googleCredentials } from "./strategy-credentials";
+import { DatabaseCredential, databaseCrendentials } from "./database";
+import { StrategyCredential, googleCredentials } from "./strategy-credentials";
 
 
 class Index {
@@ -8,8 +8,8 @@ class Index {
    * @description Returns Database Configuration
    * @returns {DatabaseConfig}
    */
-  public getDbConfig(): DatabaseConfig {
-    return databaseConfig;
+  public getDbConfig(): DatabaseCredential {
+    return databaseCrendentials;
   }
   
   
@@ -17,7 +17,7 @@ class Index {
    * @description Returns Google Credentials
    * @returns {StrategyCredentials}
    */
-  public getGoogleCredentials(): StrategyCredentials {
+  public getGoogleCredentials(): StrategyCredential {
     return googleCredentials;
   }
   

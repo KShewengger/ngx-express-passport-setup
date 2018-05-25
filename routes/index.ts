@@ -6,7 +6,7 @@ const router: Router = Router();
 
 
 /**
- * @api
+ * @api {get} /
  * @description Renders Express Home Page
  *
  * @param {Request} req

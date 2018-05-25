@@ -10,12 +10,15 @@ const frontEndOriginUrl = process.env.FRONTEND_URL;
 
 
 /**
- * @description Passport Google Authentication.
+ * @api {get} /google
+ * @description Passport Google Authentication - Holds the redirection from your app to gmail login page.
  */
 router.get("/google", Passport.authenticate("google", { scope: [ "profile", "email" ] }));
 
+
 /**
- * @description Passport Google Callback.
+ * @api {get} /google/callback
+ * @description Passport Google Callback - After login from gmail, if successful it will redirect back to your app. If not, redirects to /
  */
 router.get("/google/callback", Passport.authenticate("google", {
   successRedirect: `${frontEndOriginUrl}/initialize`,
@@ -24,12 +27,14 @@ router.get("/google/callback", Passport.authenticate("google", {
 
 
 /**
- * @description Get user information.
+ * @api {get} /user
+ * @description Get user's information.
  */
 router.get("/user", authApi.getUser);
 
 
 /**
+ * @api {get} /logout
  * @description Log Out User.
  */
 router.get("/logout", authApi.logout);
