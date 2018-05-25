@@ -1,8 +1,4 @@
-import * as dotenv from "dotenv";
-
 import { Strategy } from "../shared/interfaces/-index";
-
-dotenv.config();
 
 
 /**

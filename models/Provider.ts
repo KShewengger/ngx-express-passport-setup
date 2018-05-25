@@ -1,6 +1,7 @@
 import { Table, Column, Model, ForeignKey, DataType, PrimaryKey } from "sequelize-typescript";
 import { Account } from "./Account";
 
+
 @Table({
   tableName: "provider",
   underscored: true

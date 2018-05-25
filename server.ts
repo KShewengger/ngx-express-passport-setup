@@ -7,8 +7,12 @@ import * as logger from "morgan";
 import * as path from "path";
 import * as favicon from "serve-favicon";
 import * as passport from "passport";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 import * as strategy from "./config/passport";
+import * as config from "./config/-index";
 import { sequelize } from "./models/-index";
 
 export const Passport = passport;

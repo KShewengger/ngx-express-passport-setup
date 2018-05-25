@@ -1,12 +1,9 @@
 "use strict";
 
 import { Router } from "express";
-import * as dotenv from "dotenv";
 
 import { Passport } from "../../server";
 import * as authApi from "./auth-api";
-
-dotenv.config();
 
 const router: Router = Router();
 const frontEndOriginUrl = process.env.FRONTEND_URL;

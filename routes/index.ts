@@ -1,6 +1,6 @@
 "use strict";
 
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Request, Response } from "express";
 
 const router: Router = Router();
 
