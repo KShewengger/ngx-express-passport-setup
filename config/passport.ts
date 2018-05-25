@@ -8,6 +8,7 @@ import { Provider } from "../models/Provider";
 const google = config.getGoogleCredentials();
 const GoogleStrategy = passportGoogleAuth.OAuth2Strategy;
 
+
 /**
  * @description Initializes Google Strategy with the credentials passed.
  *
@@ -42,6 +43,7 @@ export function initializeGoogleStrategy(passport: passport.PassportStatic): voi
   ));
 }
 
+
 /**
  * @description Creates new user.
  *
@@ -58,6 +60,7 @@ async function createUser(user: any, done: Function): Promise<any> {
   .catch(err => console.error(err));
 }
 
+
 /**
  * @description Get Provider Id (Google, Twitter, LinkedIn, Local)
  *
@@ -70,6 +73,7 @@ async function getProviderId(provider: string): Promise<any> {
   .then(provider => provider.id)
   .catch(err => console.error(err));
 }
+
 
 /**
  * @description Initializes User Account with the given set of object.

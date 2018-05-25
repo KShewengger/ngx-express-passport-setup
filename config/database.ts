@@ -1,5 +1,6 @@
 const db = require("./config").development;
 
+
 export interface DatabaseConfig {
   username: string;
   password: string;

@@ -38,6 +38,7 @@ export class Server {
     this.checkDbConnection();
   }
   
+  
   /**
    * Middlewares
    */
@@ -56,6 +57,7 @@ export class Server {
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   }
+  
   
   /**
    * Error Handlers
@@ -78,12 +80,14 @@ export class Server {
     });
   }
   
+  
   /**
    * Initialize Passport Strategies
    */
   private initializeStrategies(): void {
     strategy.initializeGoogleStrategy(passport);
   }
+  
   
   /**
    * Authenticate DB Connection
@@ -93,6 +97,7 @@ export class Server {
       .then(() => console.log("Database connection is set."))
       .catch(err => console.error("Unable to connect to the database", err));
   }
+  
   
   /**
    * Assign API Routes

@@ -18,7 +18,7 @@ const sequelize = new Sequelize({
   operatorsAliases: false
 });
 
-sequelize.addModels([ Account, Provider ]);
 
+sequelize.addModels([ Account, Provider ]);
 
 export { sequelize, Sequelize };

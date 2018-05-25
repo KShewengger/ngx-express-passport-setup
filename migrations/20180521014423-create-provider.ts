@@ -4,6 +4,7 @@ import { QueryInterface, DataTypes } from "sequelize";
 
 const ProviderTable = "provider";
 
+
 export async function up(queryInterface: QueryInterface, Sequelize: DataTypes) {
   return await queryInterface.createTable(ProviderTable, {
     id: {

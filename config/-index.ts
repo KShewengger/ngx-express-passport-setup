@@ -1,6 +1,7 @@
 import { DatabaseConfig, databaseConfig } from "./database";
 import { StrategyCredentials, googleCredentials } from "./strategy-credentials";
 
+
 class Index {
   
   /**
@@ -11,6 +12,7 @@ class Index {
     return databaseConfig;
   }
   
+  
   /**
    * @description Returns Google Credentials
    * @returns {StrategyCredentials}
@@ -20,5 +22,6 @@ class Index {
   }
   
 }
+
 
 export const config = new Index();
