@@ -15,7 +15,6 @@ export const Passport = passport;
 
 const cors = require("cors");
 const session = require("express-session");
-const dotenv = require("dotenv").config();
 
 import { indexRoute } from "./routes/index";
 import { authRoutes } from "./routes/auth/-index";

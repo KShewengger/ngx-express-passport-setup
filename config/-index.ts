@@ -1,6 +1,7 @@
 import { Database, Strategy } from "../shared/interfaces/-index";
-import { databaseCrendentials } from "./database";
 import { googleCredentials } from "./strategy";
+
+const databaseCredentials = require("./config");
 
 
 class Index {
@@ -10,7 +11,7 @@ class Index {
    * @returns {DatabaseConfig}
    */
   public getDbConfig(): Database {
-    return databaseCrendentials;
+    return databaseCredentials;
   }
   
   

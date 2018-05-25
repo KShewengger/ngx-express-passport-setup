@@ -1,13 +1,17 @@
 "use strict";
 
 import { Sequelize } from "sequelize-typescript";
+import * as dotenv from "dotenv";
 
 import { Account } from "./Account";
 import { Provider } from "./Provider";
 
 import { config } from "../config/-index";
 
-const db = config.getDbConfig();
+dotenv.config();
+
+const env = process.env.NODE_ENV || "development";
+const db  = config.getDbConfig()[env];
 
 const sequelize = new Sequelize({
   host: db.host,
