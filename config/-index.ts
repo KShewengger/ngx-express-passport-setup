@@ -1,7 +1,7 @@
 import { Database, Strategy } from "../shared/interfaces/-index";
 import { googleCredentials } from "./strategy";
 
-const databaseCredentials = require("./config");
+const databaseCredentials = require("./database");
 
 
 class Index {
@@ -24,6 +24,5 @@ class Index {
   }
   
 }
-
 
 export const config = new Index();
