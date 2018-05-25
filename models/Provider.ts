@@ -1,4 +1,4 @@
-import { Table, Column, Model, ForeignKey, DataType, PrimaryKey, IsUUID } from "sequelize-typescript";
+import { Table, Column, Model, ForeignKey, DataType, PrimaryKey } from "sequelize-typescript";
 import { Account } from "./Account";
 
 @Table({

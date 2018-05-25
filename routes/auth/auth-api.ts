@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 
+import { User } from "../../shared/interfaces/-index";
+
 const frontEndOriginUrl = process.env.FRONTEND_URL;
 
 
@@ -13,7 +15,7 @@ const frontEndOriginUrl = process.env.FRONTEND_URL;
 export function getUser(req: Request, res: Response): void {
   if (req.isAuthenticated()) {
     const { id, first_name: firstName, last_name: lastName, email, gender, provider_id: providerId } = req.user;
-    const user = { id, firstName, lastName, email, gender, providerId };
+    const user: User = { id, firstName, lastName, email, gender, providerId };
     
     res.json(user);
   }

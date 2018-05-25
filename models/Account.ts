@@ -1,4 +1,4 @@
-import { Table, Column, Model, ForeignKey, DataType, IsEmail, PrimaryKey, IsUUID } from "sequelize-typescript";
+import { Table, Column, Model, ForeignKey, DataType, IsEmail, PrimaryKey } from "sequelize-typescript";
 import { Provider } from "./Provider";
 
 

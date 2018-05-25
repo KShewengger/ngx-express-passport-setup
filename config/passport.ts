@@ -1,4 +1,5 @@
 import * as passportGoogleAuth from "passport-google-oauth";
+import * as snakeCase from "snakecase-keys";
 import * as passport from "passport";
 
 import { config } from "./-index";
@@ -45,23 +46,6 @@ export function initializeGoogleStrategy(passport: passport.PassportStatic): voi
 
 
 /**
- * @description Creates new user.
- *
- * @param user
- * @param done
- * @returns {Promise<any>}
- */
-async function createUser(user: any, done: Function): Promise<any> {
-  const newAccount = await initializeNewUserAccount(user);
-  
-  return await Account
-  .create(newAccount)
-  .then(account => done(null, account))
-  .catch(err => console.error(err));
-}
-
-
-/**
  * @description Get Provider Id (Google, Twitter, LinkedIn, Local)
  *
  * @param {String} provider
@@ -84,12 +68,35 @@ async function getProviderId(provider: string): Promise<any> {
 async function initializeNewUserAccount(user: any): Promise<any> {
   const providerId = await getProviderId(user.provider);
   
-  return {
+  const filterUser = {
     id: user.id,
-    first_name: user.name.givenName,
-    last_name: user.name.familyName,
+    firstName: user.name.givenName,
+    lastName: user.name.familyName,
     email: user.emails[ 0 ].value,
     gender: user.gender,
-    provider_id: providerId
+    providerId: providerId
   };
+  
+  const snakeCaseUser = snakeCase(filterUser);
+  
+  return snakeCaseUser;
 }
+
+
+/**
+ * @description Creates new user.
+ *
+ * @param user
+ * @param done
+ * @returns {Promise<any>}
+ */
+async function createUser(user: any, done: Function): Promise<any> {
+  const newAccount = await initializeNewUserAccount(user);
+  
+  return await Account
+  .create(newAccount)
+  .then(account => done(null, account))
+  .catch(err => console.error(err));
+}
+
+
