@@ -1,4 +1,4 @@
-import { Strategy } from "../shared/interfaces/-index";
+import { Strategy } from "../../shared/interfaces/-index";
 
 
 /**

@@ -5,17 +5,17 @@ import { Sequelize } from "sequelize-typescript";
 import { Account } from "./Account";
 import { Provider } from "./Provider";
 
-import { config } from "../config/-index";
+import { Database } from "../config/-index";
 
 const env = process.env.NODE_ENV || "development";
-const db  = config.getDbConfig()[env];
+const db  = Database[env];
 
 const sequelize = new Sequelize({
-  host: db.host,
-  database: db.database,
-  dialect: db.dialect,
-  username: db.username,
-  password: db.password,
+  host      : db.host,
+  database  : db.database,
+  dialect   : db.dialect,
+  username  : db.username,
+  password  : db.password,
   operatorsAliases: false
 });
 

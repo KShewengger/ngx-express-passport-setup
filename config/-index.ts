@@ -1,28 +1,8 @@
-import { Database, Strategy } from "../shared/interfaces/-index";
-import { googleCredentials } from "./strategy";
+import * as Credential from "./passport/credential";
+import * as Common from "./passport/common";
+import * as Strategy from "./passport/strategy";
+import * as ProviderField from "./passport/provider-field";
 
-const databaseCredentials = require("./database");
+const Database = require("./database");
 
-
-class Index {
-  
-  /**
-   * @description Returns Database Configuration
-   * @returns {DatabaseConfig}
-   */
-  public getDbConfig(): Database {
-    return databaseCredentials;
-  }
-  
-  
-  /**
-   * @description Returns Google Credentials
-   * @returns {StrategyCredentials}
-   */
-  public getGoogleCredentials(): Strategy {
-    return googleCredentials;
-  }
-  
-}
-
-export const config = new Index();
+export { Credential, Common, Strategy, Database, ProviderField };

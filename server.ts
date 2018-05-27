@@ -11,8 +11,8 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-import * as strategy from "./config/passport";
 import * as config from "./config/-index";
+import { initializeStrategies } from "./config/passport/-initialize";
 import { sequelize } from "./models/-index";
 
 export const Passport = passport;
@@ -88,7 +88,7 @@ export class Server {
    * Initialize Passport Strategies
    */
   private initializeStrategies(): void {
-    strategy.initializeGoogleStrategy(passport);
+    initializeStrategies(passport);
   }
   
   
