@@ -22,7 +22,6 @@ export class Account extends Model<Account> {
   @Column(DataType.STRING)
   last_name: string;
 
-  @IsEmail
   @Column(DataType.STRING)
   email: string;
 

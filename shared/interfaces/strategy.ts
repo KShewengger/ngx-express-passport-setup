@@ -1,5 +1,13 @@
-export interface Strategy {
+export interface CallbackUrl {
+  callbackUrl: string;
+}
+
+export interface CommonStrategy extends CallbackUrl {
   clientID: string;
   clientSecret: string;
-  callbackUrl: string;
+}
+
+export interface TwitterStrategy extends CallbackUrl {
+  consumerKey: string;
+  consumerSecret: string;
 }

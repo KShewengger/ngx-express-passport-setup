@@ -23,7 +23,5 @@ export function initializeStrategies(passport: passport.PassportStatic): void {
   });
   
   Strategy.initializeGoogleStrategy(passport);
+  Strategy.initializeTwitterStrategy(passport);
 }
-
-
-

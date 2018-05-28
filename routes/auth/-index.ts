@@ -18,9 +18,26 @@ router.get("/google", Passport.authenticate("google", { scope: [ "profile", "ema
 
 /**
  * @api {get} /google/callback
- * @description Passport Google Callback - After login from gmail, if successful it will redirect back to your app. If not, redirects to /
+ * @description Handles the callback after google has authenticated the user.
  */
 router.get("/google/callback", Passport.authenticate("google", {
+  successRedirect: `${frontEndOriginUrl}/initialize`,
+  failureRedirect: "/"
+}));
+
+
+/**
+ * @api {get} /twitter
+ * @description Passport Twitter Authentication - Holds the redirection from your app to twitter login page.
+ */
+router.get("/twitter", Passport.authenticate("twitter"));
+
+
+/**
+ * @api {get} /twitter/callback
+ * @description Handles the callback after google has authenticated the user.
+ */
+router.get("/twitter/callback", Passport.authenticate("twitter", {
   successRedirect: `${frontEndOriginUrl}/initialize`,
   failureRedirect: "/"
 }));

@@ -1,6 +1,6 @@
 import { Database } from "./database";
-import { Strategy } from "./strategy";
+import { CommonStrategy, TwitterStrategy } from "./strategy";
 import { User } from "./user";
 
 
-export { Database, Strategy, User };
+export { Database, CommonStrategy, TwitterStrategy, User };

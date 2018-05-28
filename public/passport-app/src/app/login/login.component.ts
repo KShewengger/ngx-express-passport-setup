@@ -9,7 +9,8 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
 
-  apiUrl: string = `http://localhost:3000`;
+  commonBaseUrl: string = "http://localhost:3000";
+  twitterBaseUrl: string = "http://127.0.0.1:3000";
 
   isSigning: boolean = false;
 

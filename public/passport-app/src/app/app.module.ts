@@ -36,7 +36,7 @@ import { AppRouting } from "./app-routing.module";
   providers: [
     AuthService,
     UserInitializeResolver,
-    { provide: "API_URL", useValue: "http://localhost:3000" },
+    { provide: "API_URL", useValue: "http://127.0.0.1:3000" },
   ],
   bootstrap: [ AppComponent ]
 })
