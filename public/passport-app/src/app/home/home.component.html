@@ -61,6 +61,12 @@
       </button>
       <br/>
 
+      <p *ngIf="user.provider === 'Twitter'">
+        <fa class="text-warning"
+            name="exclamation-triangle"></fa>
+        NOTE: &nbsp;<strong>Email</strong> and <strong>Gender</strong> are not supported on Twitter Authentication response.
+      </p>
+
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
+import { Provider } from "../../../../../shared/enums/provider";
+
 
 @Component({
   selector: "passport-initialize",
@@ -14,6 +16,8 @@ export class InitializeComponent implements OnInit {
 
   ngOnInit() {
     const user = this.route.snapshot.data.user;
+    
+    user.provider = Provider[user.providerId];
 
     localStorage.setItem("user", JSON.stringify(user));
 
