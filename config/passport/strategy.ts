@@ -3,7 +3,6 @@ import * as passportTwitter from "passport-twitter";
 import * as passport from "passport";
 
 import { Credential, Common } from "../-index";
-import { Account } from "../../models/Account";
 
 const GoogleStrategy  = passportGoogleAuth.OAuth2Strategy;
 const TwitterStrategy = passportTwitter.Strategy;
@@ -24,7 +23,7 @@ export function initializeGoogleStrategy(passport: passport.PassportStatic): voi
       callbackURL   : google.callbackUrl,
     },
     (accessToken: string, refreshToken: string, profile: any, done: Function) => {
-      process.nextTick(async () => await findAndCreateUser(profile, done));
+      process.nextTick(async () => await Common.findAndCreateUser(profile, done));
     }
   ));
 }
@@ -41,24 +40,10 @@ export function initializeTwitterStrategy(passport: passport.PassportStatic): vo
     consumerSecret: twitter.consumerSecret,
     callbackURL   : twitter.callbackUrl
   },(accessToken: string, refreshToken: string, profile: any, done: Function) => {
-      process.nextTick(async () => await findAndCreateUser(profile, done));
+      process.nextTick(async () => await Common.findAndCreateUser(profile, done));
     }
   ));
 }
 
-
-/**
- * @description Finds User: if user already exists, it will create new user. If not, it will return its already registered data.
- *
- * @param {Any} user
- * @param {Function} done
- * @returns {Promise<any>}
- */
-async function findAndCreateUser(user: any, done: Function): Promise<any> {
-  return await Account
-  .findById(user.id)
-  .then(async account => account ? done(null, account) : await Common.createUser(user, done))
-  .catch(err => console.error(err));
-}
 
 

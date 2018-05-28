@@ -33,24 +33,6 @@ export async function filterUserFields(user: any): Promise<any> {
   return transformFields;
 }
 
-
-/**
- * @description Creates new user.
- *
- * @param user
- * @param done
- * @returns {Promise<any>}
- */
-export async function createUser(user: any, done: Function): Promise<any> {
-  const newAccount = await filterUserFields(user);
-  
-  return await Account
-  .create(newAccount)
-  .then(account => done(null, account))
-  .catch(err => console.error(err));
-}
-
-
 async function getUserFieldsByProvider(provider: string, user: any): Promise<any> {
   const providerId = await getProviderId(provider);
   const id: string = user.id;
@@ -85,3 +67,36 @@ async function getUserFieldsByProvider(provider: string, user: any): Promise<any
   
   return userFields;
 }
+
+
+/**
+ * @description Creates new user.
+ *
+ * @param user
+ * @param done
+ * @returns {Promise<any>}
+ */
+export async function createUser(user: any, done: Function): Promise<any> {
+  const newAccount = await filterUserFields(user);
+  
+  return await Account
+  .create(newAccount)
+  .then(account => done(null, account))
+  .catch(err => console.error(err));
+}
+
+
+/**
+ * @description Finds User: if user already exists, it will create new user. If not, it will return its already registered data.
+ *
+ * @param {Any} user
+ * @param {Function} done
+ * @returns {Promise<any>}
+ */
+export async function findAndCreateUser(user: any, done: Function): Promise<any> {
+  return await Account
+  .findById(user.id)
+  .then(async account => account ? done(null, account) : await createUser(user, done))
+  .catch(err => console.error(err));
+}
+
