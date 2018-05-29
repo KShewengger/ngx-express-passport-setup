@@ -1,4 +1,4 @@
-export enum Provider {
+export enum Strategy {
   Google = 1,
   Facebook = 2,
   Twitter = 3,

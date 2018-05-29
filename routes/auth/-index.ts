@@ -44,6 +44,25 @@ router.get("/twitter/callback", Passport.authenticate("twitter", {
 
 
 /**
+ * @api {get} /facebook
+ * @description Passport Facebook Authentication - Holds the redirection from your app to twitter login page.
+ */
+router.get("/facebook", Passport.authenticate("facebook", {
+  scope : ["public_profile", "email", "user_gender"]
+}));
+
+
+/**
+ * @api {get} /facebook/callback
+ * @description Handles the callback after facebook has authenticated the user.
+ */
+router.get("/facebook/callback", Passport.authenticate("facebook", {
+  successRedirect: `${frontEndOriginUrl}/initialize`,
+  failureRedirect: "/"
+}));
+
+
+/**
  * @api {get} /user
  * @description Get user's information.
  */

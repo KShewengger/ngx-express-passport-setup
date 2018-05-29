@@ -3,11 +3,12 @@ import * as snakeCase from "snakecase-keys";
 import { Account } from "../../models/Account";
 import { Provider } from "../../models/Provider";
 
+import { Strategy } from "../../shared/enums/strategy";
 import { User } from "../../shared/interfaces/user";
 
 
 /**
- * @description Fetches Provider Id (Google, Twitter, LinkedIn, Local)
+ * @description Fetches Strategy Id (Google, Twitter, LinkedIn, Local)
  *
  * @param {String} provider
  * @returns {Promise<any>}
@@ -33,37 +34,37 @@ export async function filterUserFields(user: any): Promise<any> {
   return transformFields;
 }
 
+
+/**
+ * @description Get User Fields by the supplied provider e.g Google, Twitter, Facebook
+ *
+ * @param {string} provider
+ * @param user
+ * @returns {Promise<any>}
+ */
 async function getUserFieldsByProvider(provider: string, user: any): Promise<any> {
   const providerId = await getProviderId(provider);
-  const id: string = user.id;
   
-  let userFields: User;
+  const id: string    = user.id;
+  const email: string = user.email;
   
+  let firstName: string;
+  let lastName: string;
+  let gender: string = "";
   
-  if (provider === "google") {
-    userFields = {
-      id,
-      providerId,
-      firstName : user.name.givenName,
-      lastName  : user.name.familyName,
-      email     : user.emails[ 0 ].value,
-      gender    : user.gender,
-    };
+  if (providerId === Strategy.Twitter){
+    const names = user.displayName.split(" ");
+    
+    lastName  = names.pop();
+    firstName = names.join(" ");
   }
   else {
-    const names = user.displayName.split(" ");
-    const lastName = names.pop();
-    const firstName = names.join(" ");
-    
-    userFields = {
-      id,
-      firstName,
-      lastName,
-      providerId,
-      email     : "",
-      gender    : "",
-    };
+    firstName = user.name.givenName;
+    lastName  = user.name.familyName;
+    gender    = user.gender;
   }
+  
+  const userFields: User = { id, email, firstName, lastName, gender, providerId };
   
   return userFields;
 }
@@ -93,9 +94,11 @@ export async function createUser(user: any, done: Function): Promise<any> {
  * @param {Function} done
  * @returns {Promise<any>}
  */
-export async function findAndCreateUser(user: any, done: Function): Promise<any> {
+export async function findOrCreateUser(user: any, done: Function): Promise<any> {
+  user.email = user.emails[0].value;
+  
   return await Account
-  .findById(user.id)
+  .findOne({ where: {email: user.email} })
   .then(async account => account ? done(null, account) : await createUser(user, done))
   .catch(err => console.error(err));
 }

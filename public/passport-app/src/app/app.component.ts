@@ -6,14 +6,4 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   template: `
     <router-outlet></router-outlet>`
 })
-export class AppComponent {
-  title = "app";
-  apiUrl: string = `http://localhost:3000`;
-
-  constructor(private http: HttpClient) {
-  }
-
-  signIn(): void {
-
-  }
-}
+export class AppComponent {}

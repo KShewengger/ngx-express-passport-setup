@@ -3,6 +3,6 @@ export interface User {
   providerId: number;
   firstName: string;
   lastName: string;
-  email: string;
-  gender: string;
+  email?: string;
+  gender?: string;
 }
