@@ -3,8 +3,7 @@ import * as snakeCase from "snakecase-keys";
 import { Account } from "../../models/Account";
 import { Provider } from "../../models/Provider";
 
-import { Strategy } from "../../shared/enums/strategy";
-import { User } from "../../shared/interfaces/user";
+import { Interface, Enum } from "../../shared/-index";
 
 
 /**
@@ -52,7 +51,7 @@ async function getUserFieldsByProvider(provider: string, user: any): Promise<any
   let lastName: string;
   let gender: string = "";
   
-  if (providerId === Strategy.Twitter){
+  if (providerId === Enum.Strategy.Twitter){
     const names = user.displayName.split(" ");
     
     lastName  = names.pop();
@@ -64,7 +63,7 @@ async function getUserFieldsByProvider(provider: string, user: any): Promise<any
     gender    = user.gender;
   }
   
-  const userFields: User = { id, email, firstName, lastName, gender, providerId };
+  const userFields: Interface.User = { id, email, firstName, lastName, gender, providerId };
   
   return userFields;
 }

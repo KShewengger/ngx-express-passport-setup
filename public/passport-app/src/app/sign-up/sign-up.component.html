@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row justify-content-md-center container-vertical-center">
-    <div class="col-md-7 col-sm-12 center-container">
-
+    <div class="center-container col-md-7 col-sm-12">
 
       <form novalidate
             [formGroup]="form">
         <div class="text-center">
           <h3 class="font-weight-bold">User Information</h3>
-          <hr/>
-          <br/>
+
+          <hr/><br/>
 
           <div class="form-group">
             <label for="first-name">First Name</label>
@@ -16,7 +15,7 @@
                    class="form-control"
                    id="first-name"
                    formControlName="firstName">
-          </div>
+          </div><!-- END .form-group -->
 
           <div class="form-group">
             <label for="last-name">Last Name</label>
@@ -24,7 +23,7 @@
                    class="form-control"
                    id="last-name"
                    formControlName="lastName">
-          </div>
+          </div><!-- END .form-group -->
 
           <div class="form-group">
             <label for="gender">Gender</label>
@@ -35,7 +34,7 @@
               <option value="m">Male</option>
               <option value="f">Female</option>
             </select>
-          </div>
+          </div><!-- END .form-group -->
 
           <div class="form-group">
             <label for="email-address">Email Address</label>
@@ -43,8 +42,9 @@
                    class="form-control"
                    id="email-address"
                    formControlName="email">
-          </div>
-        </div>
+          </div><!-- END .form-group -->
+
+        </div><!-- END .text-center -->
       </form>
 
       <br/>
@@ -55,6 +55,6 @@
       </button>
       <br/>
 
-    </div>
-  </div>
-</div>
+    </div><!-- END .center-container ->
+  </div><!-- END .row ->
+</div><!-- END .container -->

@@ -1,70 +1,70 @@
 <div class="container">
-    <div class="row justify-content-md-center container-vertical-center">
-      <div class="col-md-6 col-sm-12 center-container">
-        <div class="text-center">
-            <i class="material-icons">assignment_ind</i>
-            <h2>Passport</h2>
-        </div>
-
-        <p class="text-center">Sign in to your account</p>
-
-        <hr/>
-        <br/>
-
-        <form novalidate
-              (submit)="signIn($event)">
-          <div class="form-group">
-            <input type="text"
-                   class="form-control"
-                   id="email"
-                   placeholder="Enter Email Address">
-          </div>
-
-          <div class="form-group">
-            <input type="password"
-                   class="form-control"
-                   id="password"
-                   placeholder="Enter Password">
-          </div>
-
-          <div class="text-right">
-            <button type="submit"
-                    class="btn btn-primary"
-                    [hidden]="isSigning"
-                    (click)="signIn($event)">
-              <small>SIGN IN</small>
-            </button>
-
-            <button type="submit"
-                    class="btn btn-primary"
-                    [hidden]="!isSigning"
-                    [disabled]="true">
-              <small>SIGNING IN &nbsp;
-                  <fa name="cog"
-                      animation="spin"></fa>
-              </small>
-            </button>
-          </div>
-        </form>
-
-
-        <div class="footer text-center">
-          <p>Or connect with
-            <span>
-              <a href="{{baseUrl}}/auth/google">
-                <fa name="google-plus"></fa>
-               </a>
-
-              <a href="{{baseUrl}}/auth/twitter">
-                <fa name="twitter"></fa>
-              </a>
-
-              <a href="{{baseUrl}}/auth/facebook">
-                <fa name="facebook"></fa>
-              </a>
-            </span>
-          </p>
-        </div>
+  <div class="row justify-content-md-center container-vertical-center">
+    <div class="center-container col-md-6 col-sm-12">
+      <div class="text-center">
+          <i class="material-icons">assignment_ind</i>
+          <h2>Passport</h2>
       </div>
-    </div>
-</div>
+
+      <p class="text-center">Sign in to your account</p>
+
+      <hr/><br/>
+
+      <form novalidate
+            (submit)="signIn($event)">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 id="email"
+                 placeholder="Enter Email Address">
+        </div><!-- END .form-group -->
+
+        <div class="form-group">
+          <input type="password"
+                 class="form-control"
+                 id="password"
+                 placeholder="Enter Password">
+        </div><!-- END .form-group -->
+
+        <div class="text-right">
+          <button type="submit"
+                  class="btn btn-primary"
+                  [hidden]="isSigning"
+                  (click)="signIn($event)">
+            <small>SIGN IN</small>
+          </button>
+
+          <button type="submit"
+                  class="btn btn-primary"
+                  [hidden]="!isSigning"
+                  [disabled]="true">
+            <small>SIGNING IN &nbsp;
+                <fa name="cog"
+                    animation="spin"></fa>
+            </small>
+          </button>
+        </div><!-- END .text-right -->
+      </form>
+
+
+      <div class="footer text-center">
+        <p>Or connect with
+          <span>
+            <a href="{{baseUrl}}/auth/google">
+              <fa name="google-plus"></fa>
+             </a>
+
+            <a href="{{baseUrl}}/auth/twitter">
+              <fa name="twitter"></fa>
+            </a>
+
+            <a href="{{baseUrl}}/auth/facebook">
+              <fa name="facebook"></fa>
+            </a>
+          </span>
+        </p>
+      </div><!-- END .footer -->
+
+    </div><!-- END .center-container -->
+  </div><!-- END .row -->
+</div><!-- END .container -->

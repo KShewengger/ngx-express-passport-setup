@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { User } from "../../../../../shared/interfaces/-index";
+import { Interface, Enum } from "../../../../../shared/-index";
 
 import { AuthService } from "../shared/auth.service";
 
@@ -13,15 +13,18 @@ import { AuthService } from "../shared/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-  user: User;
-
+  user: Interface.User;
+  provider: string;
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private homeService: AuthService) {}
 
   ngOnInit() {
-    const userInfo = localStorage.getItem("user");
-    this.user = JSON.parse(userInfo);
+    const userInfo  = localStorage.getItem("user");
+    
+    this.user     = JSON.parse(userInfo);
+    this.provider = Enum.Strategy[this.user.providerId];
   }
 
   signOut(): void {

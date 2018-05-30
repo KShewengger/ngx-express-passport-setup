@@ -1,4 +1,4 @@
-import { Table, Column, Model, ForeignKey, DataType, IsEmail, Length, PrimaryKey, BeforeCreate, Is } from "sequelize-typescript";
+import { Table, Column, Model, ForeignKey, DataType, IsEmail, Length, PrimaryKey, BeforeCreate } from "sequelize-typescript";
 import * as bcrypt from "bcrypt";
 
 import { Provider } from "./Provider";

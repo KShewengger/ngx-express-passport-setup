@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { Strategy } from "../../../../../shared/enums/strategy";
+import { Interface, Enum } from "../../../../../shared/-index";
 
 
 @Component({
@@ -11,17 +11,29 @@ import { Strategy } from "../../../../../shared/enums/strategy";
 })
 export class InitializeComponent implements OnInit {
 
+  provider: string;
+  
+  isInvalidAuthentication: boolean = false;
+  
   constructor(private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const user = this.route.snapshot.data.user;
+    this.checkUserProviderId();
+  }
+  
+  checkUserProviderId(): void {
+    const snapshot    = this.route.snapshot;
+    const user: Interface.User  = snapshot.data.user;
+    const providerId: number = snapshot.params.providerId;
     
-    user.provider = Strategy[user.providerId];
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    setTimeout(() => this.router.navigate([ "/home" ]), 1000);
+    this.provider = Enum.Strategy[user.providerId];
+  
+    if (providerId == user.providerId) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setTimeout(() => this.router.navigate([ "/home" ]), 1000);
+    }
+    else this.isInvalidAuthentication = true;
   }
 
 }
