@@ -21,7 +21,8 @@ export async function up(queryInterface: QueryInterface, Sequelize: DataTypes) {
     const providers = [
       { id: 1, name: "google" },
       { id: 2, name: "facebook" },
-      { id: 3, name: "twitter" }
+      { id: 3, name: "twitter" },
+      { id: 4, name: "local" }
     ];
     
     return await queryInterface.bulkInsert(ProviderTable, providers);

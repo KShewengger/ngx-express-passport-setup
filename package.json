@@ -11,6 +11,7 @@
     "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
@@ -42,6 +43,7 @@
     "@babel/preset-env": "^7.0.0-beta.45",
     "@babel/preset-typescript": "^7.0.0-beta.45",
     "@babel/register": "^7.0.0-beta.45",
+    "@types/bcrypt": "^2.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/cookie-parser": "^1.4.1",
     "@types/dotenv": "^4.0.3",

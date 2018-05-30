@@ -27,6 +27,9 @@ export async function up(queryInterface: QueryInterface, Sequelize: DataTypes) {
     },
     gender: {
       type: Sequelize.STRING
+    },
+    password: {
+      type: Sequelize.CHAR(76)
     }
   });
 }
