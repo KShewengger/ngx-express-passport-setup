@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
+import { User } from "../../../../../shared/interfaces/-index";
+
 import { AuthService } from "../shared/auth.service";
 
 
@@ -11,7 +13,7 @@ import { AuthService } from "../shared/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-  user: any;
+  user: User;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
