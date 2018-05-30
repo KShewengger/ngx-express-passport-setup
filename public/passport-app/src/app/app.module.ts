@@ -11,7 +11,7 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { InitializeComponent } from "./initialize/initialize.component";
 
-import { AuthService } from "./auth.service";
+import { AuthService } from "./shared/auth.service";
 
 import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 
@@ -36,7 +36,8 @@ import { AppRouting } from "./app-routing.module";
   providers: [
     AuthService,
     UserInitializeResolver,
-    { provide: "API_URL", useValue: "http://127.0.0.1:3000" },
+    { provide: "COMMON_BASE_URL", useValue: "http://localhost:3000" },
+    { provide: "TWITTER_BASE_URL", useValue: "http://127.0.0.1:3000" }
   ],
   bootstrap: [ AppComponent ]
 })

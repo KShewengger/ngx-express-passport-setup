@@ -13,7 +13,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "initialize",
+    path: "initialize/:providerId",
     component: InitializeComponent,
     resolve: { user: UserInitializeResolver }
   },

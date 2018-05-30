@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from "@angular/r
 
 import { Observable } from "rxjs/Observable";
 
-import { AuthService } from "../auth.service";
+import { AuthService } from "../shared/auth.service";
 
 
 @Injectable()
@@ -14,7 +14,7 @@ export class UserInitializeResolver implements Resolve<any> {
               private authService: AuthService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.authService.fetchUser();
+    return this.authService.fetchUser(route.params.providerId);
   }
 
 }
