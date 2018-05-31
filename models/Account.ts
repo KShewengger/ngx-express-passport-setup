@@ -1,4 +1,4 @@
-import { Table, Column, Model, ForeignKey, DataType, IsEmail, Length, PrimaryKey, BeforeCreate } from "sequelize-typescript";
+import { Table, Column, Model, ForeignKey, DataType, IsEmail, Length, PrimaryKey, BeforeCreate, Is } from "sequelize-typescript";
 import * as bcrypt from "bcrypt";
 
 import { Provider } from "./Provider";
@@ -17,7 +17,6 @@ export class Account extends Model<Account> {
   @ForeignKey(() => Provider)
   @Column(DataType.INTEGER)
   provider_id: string;
-  
   
   @Column(DataType.STRING)
   first_name: string;
@@ -38,14 +37,6 @@ export class Account extends Model<Account> {
   
   @BeforeCreate
   static encryptPassword(instance: Account) {
-    if (instance.password) return bcrypt.hashSync(instance.password, bcrypt.genSaltSync(8));
-  }
-  
-  get isValidPassword(): boolean {
-    return bcrypt.compareSync(this.getDataValue("password"), this.password);
-  }
-  
-  set passwordToValidate(password: string) {
-    this.setDataValue("password", password);
+    if (instance.password) instance.password = bcrypt.hashSync(instance.password, bcrypt.genSaltSync(8));
   }
 }

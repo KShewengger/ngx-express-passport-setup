@@ -21,8 +21,7 @@ export class UserService {
   saveUser(user: Interface.User): Observable<any> {
     return this.http
     .post(`${this.commonBaseUrl}/user`, user, {observe: "response"})
-    .map((response: any) => response)
-    .catch((err: HttpErrorResponse) => Observable.throw(err));
+    .map((response: any) => response);
   }
   
   fetchUser(providerId: number): Observable<any> {

@@ -17,6 +17,7 @@ export class SignUpComponent implements OnInit {
   form: FormGroup;
   
   isSuccessful: boolean = false;
+  errorMessage: string;
   
   providerId = new FormControl(Enum.Strategy.Local, [ Validators.required ]);
   firstName  = new FormControl("", [ Validators.required ]);
@@ -51,8 +52,13 @@ export class SignUpComponent implements OnInit {
 
   register(user: Interface.User): void {
     this.userService
-    .saveUser(user)
-    .subscribe(response => this.isSuccessful = response.status == 200 ? true : false);
+      .saveUser(user)
+      .subscribe(
+      response => this.isSuccessful = true,
+      err => {
+        this.isSuccessful = false;
+        this.errorMessage = err.error.duplicate;
+      });
   }
 
 }
