@@ -3,65 +3,102 @@
     <div class="center-container col-md-6 col-sm-12">
       <div class="text-center">
           <i class="material-icons">assignment_ind</i>
-          <h2>Passport</h2>
-      </div>
+          <h2>Passport Auth</h2>
+      </div><!-- END .text-center -->
 
-      <p class="text-center">Sign in to your account</p>
+      <br/><hr/><br/>
 
-      <hr/><br/>
-
-      <form novalidate
-            (submit)="signIn($event)">
-        <div class="form-group">
-          <input type="text"
-                 class="form-control"
-                 id="email"
-                 placeholder="Enter Email Address">
-        </div><!-- END .form-group -->
-
-        <div class="form-group">
-          <input type="password"
-                 class="form-control"
-                 id="password"
-                 placeholder="Enter Password">
-        </div><!-- END .form-group -->
-
-        <div class="text-right">
-          <button type="submit"
-                  class="btn btn-primary"
-                  [hidden]="isSigning"
-                  (click)="signIn($event)">
-            <small>SIGN IN</small>
-          </button>
-
-          <button type="submit"
-                  class="btn btn-primary"
-                  [hidden]="!isSigning"
-                  [disabled]="true">
-            <small>SIGNING IN &nbsp;
-                <fa name="cog"
-                    animation="spin"></fa>
-            </small>
-          </button>
-        </div><!-- END .text-right -->
-      </form>
-
-
-      <div class="footer text-center">
-        <p>Or connect with
-          <span>
-            <a href="{{baseUrl}}/auth/google">
+      <!-- Social Login Buttons -->
+      <div class="row text-center"
+           id="social-login">
+        <div class="col-md-12">
+          <a href="{{baseUrl}}/auth/google">
+            <button class="btn"
+                    id="google">
               <fa name="google-plus"></fa>
-             </a>
+              <span>Sign In with Google</span>
+            </button>
+          </a>
+        </div><!-- END .col-md-12 -->
 
-            <a href="{{baseUrl}}/auth/twitter">
+        <div class="col-md-12">
+          <a href="{{baseUrl}}/auth/twitter">
+            <button class="btn"
+                    id="twitter">
               <fa name="twitter"></fa>
-            </a>
+              <span>Sign In with Twitter</span>
+            </button>
+          </a>
+        </div><!-- END .col-md-12 -->
 
-            <a href="{{baseUrl}}/auth/facebook">
+        <div class="col-md-12">
+          <a href="{{baseUrl}}/auth/facebook">
+            <button class="btn"
+                    id="facebook">
               <fa name="facebook"></fa>
-            </a>
-          </span>
+              <span>Sign In with Facebook</span>
+            </button>
+          </a>
+        </div><!-- END .col-md-12 -->
+      </div><!-- END .row -->
+
+      <br/>
+
+      <div class="text-center"
+           id="or-border">
+        <hr>
+        <span class="text-center">or</span>
+      </div><!-- END #or-border -->
+
+      <br/>
+
+      <!-- Local Login -->
+      <div class="row text-center">
+        <div class="col-md-12">
+          <form novalidate
+                (submit)="signIn($event)">
+            <div class="form-group">
+              <input type="text"
+                     class="form-control"
+                     id="email"
+                     placeholder="Enter Email Address">
+            </div><!-- END .form-group -->
+
+            <div class="form-group">
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     placeholder="Enter Password">
+            </div><!-- END .form-group -->
+
+            <div>
+              <button type="submit"
+                      class="btn btn-block btn-primary"
+                      [hidden]="isSigning"
+                      (click)="signIn($event)">
+                <small>SIGN IN</small>
+              </button>
+
+              <button type="submit"
+                      class="btn btn-block btn-primary"
+                      [hidden]="!isSigning"
+                      [disabled]="true">
+                <small>SIGNING IN &nbsp;
+                  <fa name="cog"
+                      animation="spin"></fa>
+                </small>
+              </button>
+            </div><!-- END div -->
+          </form>
+        </div><!-- END .col-md-12 -->
+      </div><!-- END .row -->
+
+      <!-- SIGN UP -->
+      <div class="footer text-right">
+        <p>Don't have an account? &nbsp;
+          <a [routerLink]="['/sign-up']">
+            <strong><u>Sign Up</u></strong>
+          </a>
         </p>
       </div><!-- END .footer -->
 
