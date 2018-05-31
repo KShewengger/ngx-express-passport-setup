@@ -2,11 +2,10 @@
 
 import { Router } from "express";
 
-import { Passport } from "../../server";
-import * as authApi from "./auth-api";
+import { Passport } from "../server";
 
 const router: Router = Router();
-const frontEndOriginUrl = `${process.env.FRONTEND_URL}/initialize`;
+const frontEndOriginUrl = process.env.FRONTEND_INITIALIZE_URL;
 
 
 /**
@@ -69,20 +68,6 @@ router.get("/twitter/callback", Passport.authenticate("twitter", {
   successRedirect: `${frontEndOriginUrl}/3`,
   failureRedirect: "/"
 }));
-
-
-/**
- * @api {get} /user
- * @description Get user's information.
- */
-router.get("/user", authApi.getUser);
-
-
-/**
- * @api {get} /logout
- * @description Log Out User.
- */
-router.get("/logout", authApi.logout);
 
 
 export const authRoutes: Router = router;

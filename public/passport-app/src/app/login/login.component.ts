@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 
 
@@ -9,13 +9,11 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
 
-  baseUrl: string = "http://127.0.0.1:3000";
-
   isSigning: boolean = false;
 
-  constructor(private router: Router) {}
-
-
+  constructor(private router: Router,
+              @Inject("TWITTER_BASE_URL") public baseUrl: string) {}
+  
   signIn(evt: Event): void {
     evt.preventDefault();
 

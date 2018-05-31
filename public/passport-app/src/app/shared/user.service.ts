@@ -7,7 +7,7 @@ import { Strategy } from "../../../../../shared/enums/strategy";
 
 
 @Injectable()
-export class AuthService {
+export class UserService {
   
   baseUrl: string;
 
@@ -19,12 +19,11 @@ export class AuthService {
   fetchUser(providerId: number): Observable<any> {
     this.baseUrl = providerId == Strategy.Twitter ? this.twitterBaseUrl : this.commonBaseUrl;
     
-    return this.http.get(`${this.baseUrl}/auth/user`, { withCredentials: true });
+    return this.http.get(`${this.baseUrl}/user`, { withCredentials: true });
   }
-
-
+  
   signOut(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/auth/logout`, { withCredentials: true });
+    return this.http.get(`${this.baseUrl}/user/logout`, { withCredentials: true });
   }
 
 }

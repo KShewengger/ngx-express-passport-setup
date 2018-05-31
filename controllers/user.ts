@@ -1,12 +1,25 @@
 import { Request, Response } from "express";
 
-import { User } from "../../shared/interfaces/-index";
+import { User } from "../shared/interfaces/-index";
 
 const frontEndOriginUrl = process.env.FRONTEND_URL;
 
 
+
 /**
- * @api /auth/user
+ * @api {post} /user
+ * @description Save new user.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+export async function saveUser(req: Request, res: Response): Promise<void> {
+
+}
+
+
+/**
+ * @api {get} /user
  * @description Get user's information.
  *
  * @param {Request} req
@@ -24,7 +37,7 @@ export function getUser(req: Request, res: Response): void {
 
 
 /**
- * @api /auth/logout
+ * @api {get} /user/logout
  * @description Log Out user.
  *
  * @param {e.Request} req

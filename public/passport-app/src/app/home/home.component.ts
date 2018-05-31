@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { Interface, Enum } from "../../../../../shared/-index";
 
-import { AuthService } from "../shared/auth.service";
+import { UserService } from "../shared/user.service";
 
 
 @Component({
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private homeService: AuthService) {}
+              private homeService: UserService) {}
 
   ngOnInit() {
     const userInfo  = localStorage.getItem("user");

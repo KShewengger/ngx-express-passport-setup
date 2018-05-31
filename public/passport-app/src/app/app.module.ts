@@ -12,7 +12,7 @@ import { HomeComponent } from "./home/home.component";
 import { InitializeComponent } from "./initialize/initialize.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 
-import { AuthService } from "./shared/auth.service";
+import { UserService } from "./shared/user.service";
 
 import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 
@@ -37,7 +37,7 @@ import { AppRouting } from "./app-routing.module";
     AppRouting
   ],
   providers: [
-    AuthService,
+    UserService,
     UserInitializeResolver,
     { provide: "COMMON_BASE_URL", useValue: "http://localhost:3000" },
     { provide: "TWITTER_BASE_URL", useValue: "http://127.0.0.1:3000" }

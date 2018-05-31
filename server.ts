@@ -20,8 +20,7 @@ export const Passport = passport;
 const cors = require("cors");
 const session = require("express-session");
 
-import { indexRoute } from "./routes/index";
-import { authRoutes } from "./routes/auth/-index";
+import { mainRoute, authRoutes, userRoutes } from "./routes/-index";
 
 
 export class Server {
@@ -106,7 +105,8 @@ export class Server {
    * Assign API Routes
    */
   private routes(): void {
-    this.app.use("/", indexRoute);
+    this.app.use("/", mainRoute);
     this.app.use("/auth", authRoutes);
+    this.app.use("/user", userRoutes);
   }
 }
