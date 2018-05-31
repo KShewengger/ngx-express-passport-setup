@@ -1,9 +1,11 @@
 import { Injectable, Inject } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
 
-import { Strategy } from "../../../../../shared/enums/strategy";
+import { Enum, Interface } from "../../../../../shared/-index";
 
 
 @Injectable()
@@ -16,8 +18,15 @@ export class UserService {
               @Inject("TWITTER_BASE_URL") private twitterBaseUrl: string) {}
 
 
+  saveUser(user: Interface.User): Observable<any> {
+    return this.http
+    .post(`${this.commonBaseUrl}/user`, user, {observe: "response"})
+    .map((response: any) => response)
+    .catch((err: HttpErrorResponse) => Observable.throw(err));
+  }
+  
   fetchUser(providerId: number): Observable<any> {
-    this.baseUrl = providerId == Strategy.Twitter ? this.twitterBaseUrl : this.commonBaseUrl;
+    this.baseUrl = providerId == Enum.Strategy.Twitter ? this.twitterBaseUrl : this.commonBaseUrl;
     
     return this.http.get(`${this.baseUrl}/user`, { withCredentials: true });
   }

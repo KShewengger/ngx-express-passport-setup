@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { User } from "../../../../../shared/interfaces/-index";
-import { Strategy } from "../../../../../shared/enums/strategy";
+import { UserService } from "../shared/user.service";
+
+import { Interface, Enum } from "../../../../../shared/-index";
 
 
 @Component({
@@ -14,16 +16,21 @@ export class SignUpComponent implements OnInit {
   
   form: FormGroup;
   
-  providerId = new FormControl(Strategy.Local, [ Validators.required ]);
+  isSuccessful: boolean = false;
+  
+  providerId = new FormControl(Enum.Strategy.Local, [ Validators.required ]);
   firstName  = new FormControl("", [ Validators.required ]);
   lastName   = new FormControl("", [ Validators.required ]);
   gender     = new FormControl("", [ Validators.required ]);
+  password   = new FormControl("", [ Validators.required, Validators.min(5) ]);
   email      = new FormControl("", [
     Validators.required,
     Validators.pattern("[a-zA-Z0-9.\._-]{1,}.(\\+(.*))?@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")
   ]);
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private userService: UserService) { }
   
   ngOnInit(): void {
     this.buildForm();
@@ -35,14 +42,17 @@ export class SignUpComponent implements OnInit {
       firstName  : this.firstName,
       lastName   : this.lastName,
       gender     : this.gender,
-      email      : this.email
+      email      : this.email,
+      password   : this.password
     };
     
     this.form = this.fb.group(fields);
   }
 
-  register(user: User): void {
-    console.log(user);
+  register(user: Interface.User): void {
+    this.userService
+    .saveUser(user)
+    .subscribe(response => this.isSuccessful = response.status == 200 ? true : false);
   }
 
 }

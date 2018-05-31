@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
+import * as uuid from "uuid/v4";
+import * as snakeCase from "snakecase-keys";
+
+import { Account } from "../models/Account";
 
 import { User } from "../shared/interfaces/-index";
 
 const frontEndOriginUrl = process.env.FRONTEND_URL;
-
 
 
 /**
@@ -13,8 +16,14 @@ const frontEndOriginUrl = process.env.FRONTEND_URL;
  * @param {Request} req
  * @param {Response} res
  */
-export async function saveUser(req: Request, res: Response): Promise<void> {
-
+export async function saveUser(req: Request, res: Response): Promise<any> {
+  const body = snakeCase(req.body);
+  body.id = uuid();
+  
+  return await Account
+  .create(body)
+  .then(response => res.send(response).status(201))
+  .catch(err => console.error(err));
 }
 
 
