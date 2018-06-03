@@ -1,5 +1,4 @@
 import * as passport from "passport";
-
 import { Account } from "../../models/Account";
 
 import { Strategy } from "../-index";
@@ -11,17 +10,16 @@ import { Strategy } from "../-index";
  * @param {passport.PassportStatic} passport
  */
 export function initializeStrategies(passport: passport.PassportStatic): void {
-  passport.serializeUser((user: any, done) => {
-    done(null, user.id);
-  });
+  passport.serializeUser((user: any, done: Function) => done(null, user.id));
   
   passport.deserializeUser(async (id: string, done: Function) => {
-    await Account
+    return await Account
     .findById(id)
     .then(account => done(null, account))
-    .catch(err => console.error(err));
+    .catch(err => done(err));
   });
   
+  Strategy.initializeLocalStrategy(passport);
   Strategy.initializeGoogleStrategy(passport);
   Strategy.initializeTwitterStrategy(passport);
   Strategy.initializeFacebookStrategy(passport);

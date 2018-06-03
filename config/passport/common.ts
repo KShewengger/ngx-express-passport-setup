@@ -82,7 +82,7 @@ export async function createUser(user: any, done: Function): Promise<any> {
   return await Account
   .create(newAccount)
   .then(account => done(null, account))
-  .catch(err => console.error(err));
+  .catch(err => done(err));
 }
 
 
@@ -99,6 +99,22 @@ export async function findOrCreateUser(user: any, done: Function): Promise<any> 
   return await Account
   .findOne({ where: {email: user.email} })
   .then(async account => account ? done(null, account) : await createUser(user, done))
-  .catch(err => console.error(err));
+  .catch(err => done(err));
+}
+
+
+/**
+ * @description Find User by Email and Password: If account found, return its info. If not, will return an error.
+ *
+ * @param {string} email
+ * @param {string} password
+ * @param {Function} done
+ * @returns {Promise<void>}
+ */
+export async function findUserByEmailPassword({email, password}, done: Function): Promise<void> {
+  return await Account
+  .findOne({ where: { email } })
+  .then(account => account ? done(null, account) : done(null, false, { message: "Account not found" }))
+  .catch(err => done(err));
 }
 

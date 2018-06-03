@@ -3,9 +3,11 @@
 import { Router } from "express";
 
 import { Passport } from "../server";
+import * as userApi from "../controllers/user";
 
 const router: Router = Router();
-const frontEndOriginUrl = process.env.FRONTEND_INITIALIZE_URL;
+const frontEndOriginUrl = process.env.FRONTEND_URL;
+const frontEndInitializeUrl = `${frontEndOriginUrl}/initialize`;
 
 
 /**
@@ -23,7 +25,7 @@ router.get("/google", Passport.authenticate("google", { scope: [ "profile", "ema
  * This will be filtered out on Front End and set the base url as either localhost or 127.0.0.1 base on the enum id used.
  */
 router.get("/google/callback", Passport.authenticate("google", {
-  successRedirect: `${frontEndOriginUrl}/1`,
+  successRedirect: `${frontEndInitializeUrl}/1`,
   failureRedirect: "/"
 }));
 
@@ -45,7 +47,7 @@ router.get("/facebook", Passport.authenticate("facebook", {
  * This will be filtered out on Front End and set the base url as either localhost or 127.0.0.1 base on the enum id used.
  */
 router.get("/facebook/callback", Passport.authenticate("facebook", {
-  successRedirect: `${frontEndOriginUrl}/2`,
+  successRedirect: `${frontEndInitializeUrl}/2`,
   failureRedirect: "/"
 }));
 
@@ -65,9 +67,16 @@ router.get("/twitter", Passport.authenticate("twitter"));
  * This will be filtered out on Front End and set the base url as either localhost or 127.0.0.1 base on the enum id used.
  */
 router.get("/twitter/callback", Passport.authenticate("twitter", {
-  successRedirect: `${frontEndOriginUrl}/3`,
+  successRedirect: `${frontEndInitializeUrl}/3`,
   failureRedirect: "/"
 }));
+
+
+/**
+ * @api {get} /login
+ * @description Passport Local Authentication
+ */
+router.post("/login", userApi.login);
 
 
 export const authRoutes: Router = router;

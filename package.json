@@ -5,7 +5,7 @@
   "scripts": {
     "ng-start": "cd ./public/passport-app && tsc && npm start",
     "express-start": "tsc-watch --onSuccess 'nodemon ./bin/www'",
-    "sq:migrate": "sequelize db:migrate",
+    "sq:migrate:all": "sequelize db:migrate",
     "sq:migrate:undo": "sequelize db:migrate:undo",
     "sq:migrate:undo:all": "sequelize db:migrate:undo:all",
     "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
@@ -25,6 +25,7 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
@@ -56,6 +57,7 @@
     "@types/passport": "^0.4.5",
     "@types/passport-facebook": "^2.1.8",
     "@types/passport-google-oauth": "^1.0.38",
+    "@types/passport-local": "^1.0.33",
     "@types/passport-twitter": "^1.0.34",
     "@types/sequelize": "^4.27.18",
     "@types/uuid": "^3.4.3",

@@ -2,12 +2,14 @@ import * as passport from "passport";
 import * as passportGoogleAuth from "passport-google-oauth";
 import * as passportTwitter from "passport-twitter";
 import * as passportFacebook from "passport-facebook";
+import * as passportLocal from "passport-local";
 
 import { Credential, Common } from "../-index";
 
 const GoogleStrategy   = passportGoogleAuth.OAuth2Strategy;
 const TwitterStrategy  = passportTwitter.Strategy;
 const FacebookStrategy = passportFacebook.Strategy;
+const LocalStrategy    = passportLocal.Strategy;
 
 const google   = Credential.googleCredentials;
 const twitter  = Credential.twitterCredentials;
@@ -60,14 +62,30 @@ export function initializeFacebookStrategy(passport: passport.PassportStatic): v
 
 
 /**
- * @description Processing User before authentication. Check if user already exists or not with findOrCreate method.
+ * @description Local Strategy Setup
+ * @param {passport.PassportStatic} passport
+ */
+export function initializeLocalStrategy(passport: passport.PassportStatic): void {
+  
+  passport.use(new LocalStrategy({
+    usernameField: "email",
+    passwordField: "password",
+  }, (email: string, password: string, done: Function) => processUser({email, password}, done, true)));
+}
+
+
+/**
+ * @description Processing User before authentication.
  *
  * @param {Any} profile
  * @param {Function} done
  * @returns {Any}
  */
-function processUser(profile: any, done: Function): any {
-  return process.nextTick(async () => await Common.findOrCreateUser(profile, done));
+function processUser(profile: any, done: Function, isLocal?: boolean): any {
+  return process.nextTick(async () => {
+    if (isLocal) await Common.findUserByEmailPassword(profile, done);
+    else await Common.findOrCreateUser(profile, done);
+  });
 }
 
 

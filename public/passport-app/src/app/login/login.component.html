@@ -55,27 +55,29 @@
       <!-- Local Login -->
       <div class="row text-center">
         <div class="col-md-12">
-          <form novalidate
-                (submit)="signIn($event)">
+          <form [formGroup]="form"
+                (submit)="signIn($event, form.value)"
+                novalidate>
             <div class="form-group">
               <input type="text"
                      class="form-control"
                      id="email"
-                     placeholder="Enter Email Address">
+                     placeholder="Enter Email Address"
+                     formControlName="email">
             </div><!-- END .form-group -->
 
             <div class="form-group">
               <input type="password"
                      class="form-control"
                      id="password"
-                     placeholder="Enter Password">
+                     placeholder="Enter Password"
+                     formControlName="password">
             </div><!-- END .form-group -->
 
             <div>
               <button type="submit"
                       class="btn btn-block btn-primary"
-                      [hidden]="isSigning"
-                      (click)="signIn($event)">
+                      [hidden]="isSigning">
                 <small>SIGN IN</small>
               </button>
 
@@ -90,6 +92,23 @@
               </button>
             </div><!-- END div -->
           </form>
+
+          <br/>
+          <div *ngIf="errorType === 'invalidProvider'"
+               class="alert alert-danger text-center">
+            Your account was created via <strong>{{provider}}</strong> authentication. Please Sign In again with the
+            right provider.
+          </div><!-- END ngIf -->
+
+          <div *ngIf="errorType === 'invalidUser'"
+               class="alert alert-danger text-center">
+            Account not Found. Please
+            <a [routerLink]="['/sign-up']">
+              <strong><u>Sign Up</u></strong>
+            </a>
+            to create and test your account.
+          </div><!-- END ngIf -->
+
         </div><!-- END .col-md-12 -->
       </div><!-- END .row -->
 

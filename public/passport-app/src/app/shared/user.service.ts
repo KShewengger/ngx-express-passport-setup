@@ -20,7 +20,7 @@ export class UserService {
 
   saveUser(user: Interface.User): Observable<any> {
     return this.http
-    .post(`${this.commonBaseUrl}/user`, user, {observe: "response"})
+    .post(`${this.commonBaseUrl}/user`, user, { observe: "response" })
     .map((response: any) => response);
   }
   
@@ -30,8 +30,15 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/user`, { withCredentials: true });
   }
   
+  signIn(credentials: any): Observable<any> {
+    return this.http
+    .post(`${this.commonBaseUrl}/auth/login`, credentials)
+    .map((response: any) => response);
+  }
+  
   signOut(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/user/logout`, { withCredentials: true });
+    this.baseUrl = this.baseUrl ? this.baseUrl : this.commonBaseUrl;
+    return this.http.get(`${this.baseUrl}/user/logout`);
   }
 
 }
