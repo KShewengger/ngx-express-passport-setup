@@ -39,4 +39,8 @@ export class Account extends Model<Account> {
   static encryptPassword(instance: Account) {
     if (instance.password) instance.password = bcrypt.hashSync(instance.password, bcrypt.genSaltSync(8));
   }
+  
+  static validateUserPassword(password: string, encryptedPassword: string): boolean {
+    return bcrypt.compareSync(password, encryptedPassword);
+  }
 }

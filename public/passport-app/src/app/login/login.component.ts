@@ -4,7 +4,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms"
 
 import { UserService } from "../shared/user.service";
 
-import { Enum } from "../../../../../shared/-index";
+import { Enum, Interface } from "../../../../../shared/-index";
 
 
 @Component({
@@ -41,27 +41,34 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group(fields);
   }
   
-  signIn(evt: Event, user: any): void {
+  signIn(evt: Event, credentials: any): void {
     evt.preventDefault();
     
     this.isSigning = true;
+  
+    const validateUserProvider = (user: Interface.User) => {
+      this.provider = Enum.Strategy[user.providerId];
+  
+      if (this.provider === "Local") this.storeLocalAndRedirect(user);
+      else this.errorType = "invalidProvider";
+    };
     
-     this.userService
-      .signIn(user)
-      .subscribe(
-        response => {
-          this.provider = Enum.Strategy[response.providerId];
-          
-          if (this.provider === "Local") {
-            localStorage.setItem("user", JSON.stringify(response));
-            this.router.navigate([ "/home" ]);
-          }
-          else this.errorType = "invalidProvider";
-        },
-        err => this.errorType = "invalidUser",
-        () => {
-          this.isSigning = false;
-          this.form.reset();
-        });
+    const initializeErrorMessage = (err: any) => this.errorType = err.error;
+    
+    this.userService
+      .signIn(credentials)
+      .subscribe(validateUserProvider, initializeErrorMessage);
+  
+    this.resetForm();
+  }
+  
+  storeLocalAndRedirect(user: Interface.User): void {
+    localStorage.setItem("user", JSON.stringify(user));
+    this.router.navigate([ "/home" ]);
+  }
+  
+  resetForm(): void {
+    this.isSigning = false;
+    this.form.reset();
   }
 }

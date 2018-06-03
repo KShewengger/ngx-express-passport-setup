@@ -109,6 +109,11 @@
             to create and test your account.
           </div><!-- END ngIf -->
 
+          <div *ngIf="errorType === 'invalidPassword'"
+               class="alert alert-danger text-center">
+            Invalid Password
+          </div><!-- END ngIf -->
+
         </div><!-- END .col-md-12 -->
       </div><!-- END .row -->
 

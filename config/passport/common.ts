@@ -114,7 +114,16 @@ export async function findOrCreateUser(user: any, done: Function): Promise<any> 
 export async function findUserByEmailPassword({email, password}, done: Function): Promise<void> {
   return await Account
   .findOne({ where: { email } })
-  .then(account => account ? done(null, account) : done(null, false, { message: "Account not found" }))
+  .then(account => {
+    if (account && account.password) {
+      const encryptedPassword = account.password.replace(/\s/g,"");
+      const isValidPassword = Account.validateUserPassword(password, encryptedPassword);
+      
+      if (!isValidPassword) return done(null, false, { message: "invalidPassword" });
+    }
+    
+    return account ? done(null, account) : done(null, false, { message: "invalidUser" });
+  })
   .catch(err => done(err));
 }
 
