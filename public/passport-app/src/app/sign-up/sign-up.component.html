@@ -62,29 +62,13 @@
               (click)="register(form.value)">Register
       </button>
 
-      <div *ngIf="isSuccessful">
-        <br/>
-        <div class="alert alert-success text-center">
-          <strong>Success!</strong>
-          Go and Test your record on
-          <a [routerLink]="['/']"
-             class="active">
-            <strong>
-              <u>Login Page</u>
-            </strong>
-          </a>
-          now!
-        </div><!-- END .alert -->
+      <div *ngIf="isSuccessful"><br/>
+        <passport-alert-message [isSuccess]="true"></passport-alert-message>
       </div><!-- END ngIf -->
 
-      <div *ngIf="!isSuccessful && errorMessage">
-        <br/>
-        <div class="alert alert-danger text-center">
-          <fa class="text-danger"
-              name="exclamation-triangle"></fa>
-
-          <strong>{{errorMessage}}</strong>
-        </div><!-- END .alert -->
+      <div *ngIf="!isSuccessful && errorMessage"><br/>
+        <passport-alert-message errorType="signUpError"
+                                [errorMessage]="errorMessage"></passport-alert-message>
       </div><!-- END ngIf -->
 
     </div><!-- END .center-container -->

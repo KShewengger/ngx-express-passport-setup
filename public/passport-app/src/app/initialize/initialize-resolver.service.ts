@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from "@angular/r
 
 import { Observable } from "rxjs/Observable";
 
-import { UserService } from "../shared/user.service";
+import { UserService } from "../shared/service/user.service";
 
 
 @Injectable()

@@ -12,41 +12,21 @@
       <div class="row text-center"
            id="social-login">
         <div class="col-md-12">
-          <a href="{{baseUrl}}/auth/google">
-            <button class="btn"
-                    id="google">
-              <fa name="google-plus"></fa>
-              <span>Sign In with Google</span>
-            </button>
-          </a>
-        </div><!-- END .col-md-12 -->
+          <passport-social-button type="google"
+                                  icon="google-plus"></passport-social-button>
 
-        <div class="col-md-12">
-          <a href="{{baseUrl}}/auth/twitter">
-            <button class="btn"
-                    id="twitter">
-              <fa name="twitter"></fa>
-              <span>Sign In with Twitter</span>
-            </button>
-          </a>
-        </div><!-- END .col-md-12 -->
+          <passport-social-button type="twitter"
+                                  icon="twitter"></passport-social-button>
 
-        <div class="col-md-12">
-          <a href="{{baseUrl}}/auth/facebook">
-            <button class="btn"
-                    id="facebook">
-              <fa name="facebook"></fa>
-              <span>Sign In with Facebook</span>
-            </button>
-          </a>
+          <passport-social-button type="facebook"
+                                  icon="facebook"></passport-social-button>
         </div><!-- END .col-md-12 -->
       </div><!-- END .row -->
 
       <br/>
 
       <div class="text-center"
-           id="or-border">
-        <hr>
+           id="or-border"><hr>
         <span class="text-center">or</span>
       </div><!-- END #or-border -->
 
@@ -94,26 +74,8 @@
           </form>
 
           <br/>
-          <div *ngIf="errorType === 'invalidProvider'"
-               class="alert alert-danger text-center">
-            Your account was created via <strong>{{provider}}</strong> authentication. Please Sign In again with the
-            right provider.
-          </div><!-- END ngIf -->
-
-          <div *ngIf="errorType === 'invalidUser'"
-               class="alert alert-danger text-center">
-            Account not Found. Please
-            <a [routerLink]="['/sign-up']">
-              <strong><u>Sign Up</u></strong>
-            </a>
-            to create and test your account.
-          </div><!-- END ngIf -->
-
-          <div *ngIf="errorType === 'invalidPassword'"
-               class="alert alert-danger text-center">
-            Invalid Password
-          </div><!-- END ngIf -->
-
+          <passport-alert-message [errorType]="errorType"
+                                  [provider]="provider"></passport-alert-message>
         </div><!-- END .col-md-12 -->
       </div><!-- END .row -->
 

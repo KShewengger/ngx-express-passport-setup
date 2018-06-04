@@ -1,0 +1,27 @@
+<div *ngIf="errorType"
+     class="alert alert-danger text-center">
+  <p *ngIf="errorType === 'invalidProvider'">
+    Your account was created via <strong>{{ provider }}</strong> authentication. Please Sign In again with the
+    right provider.
+  </p>
+
+  <p *ngIf="errorType === 'invalidUser'">
+    Account not Found. Please
+    <a [routerLink]="['/sign-up']"><strong><u>Sign Up</u></strong></a> to create and test your account.
+  </p>
+
+  <p *ngIf="errorType === 'invalidPassword'">Invalid Password</p>
+
+  <p *ngIf="errorType === 'signUpError'">
+    <fa class="text-danger"
+        name="exclamation-triangle"></fa>
+
+    <strong>{{errorMessage}}</strong>
+  </p>
+</div><!-- END .alert -->
+
+<div *ngIf="isSuccess"
+     class="alert alert-success text-center">
+  <strong>Success!</strong>
+  Go and Test your record on <a [routerLink]="['/']" class="active"><strong><u>Login Page</u></strong></a>now!
+</div><!-- END .alert -->

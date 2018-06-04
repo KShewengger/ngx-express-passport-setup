@@ -2,13 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { UserService } from "../shared/user.service";
+import { UserService } from "../shared/service/user.service";
 
 import { Interface, Enum } from "../../../../../shared/-index";
 
 
 @Component({
-  selector: "passport-sign-up",
+  selector: "passport-signup",
   templateUrl: "./sign-up.component.html",
   styleUrls: ["../home/home.component.css"]
 })
@@ -57,7 +57,7 @@ export class SignUpComponent implements OnInit {
       response => this.isSuccessful = true,
       err => {
         this.isSuccessful = false;
-        this.errorMessage = err.error.duplicate;
+        this.errorMessage = err.error.message;
       });
   }
 

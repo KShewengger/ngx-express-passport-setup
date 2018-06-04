@@ -11,8 +11,10 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { InitializeComponent } from "./initialize/initialize.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
+import { AlertMessageComponent } from "./shared/components/alert-message/alert-message.component";
+import { SocialButtonComponent } from "./shared/components/social-button/social-button.component";
 
-import { UserService } from "./shared/user.service";
+import { UserService } from "./shared/service/user.service";
 
 import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 
@@ -25,7 +27,13 @@ import { AppRouting } from "./app-routing.module";
     LoginComponent,
     HomeComponent,
     InitializeComponent,
-    SignUpComponent
+    SignUpComponent,
+    AlertMessageComponent,
+    SocialButtonComponent
+  ],
+  entryComponents: [
+    AlertMessageComponent,
+    SocialButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -46,48 +46,6 @@ i.material-icons {
   margin-left: -20px;
 }
 
-
-/* Social Login */
-#social-login button {
-  margin-bottom: 7px;
-  text-align: left;
-  padding-left: 19px;
-  width: 100%;
-}
-
-#social-login fa { border-right: 1px solid white; }
-
-#social-login fa + span {
-  padding-left: 30px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-#google {
-  background-color: #dd4b39 !important;
-  border-color: #dd4b39 !important;
-  color: white;
-}
-
-#google fa { padding-right: 9px; }
-
-#twitter {
-  background-color: #1da1f2 !important;
-  border-color: #1da1f2 !important;
-  color: white;
-}
-
-#twitter fa { padding-right: 14px; }
-
-#facebook {
-  background-color: #3b5998 !important;
-  border-color: #3b5998 !important;
-  color: white;
-}
-
-#facebook fa { padding-right: 19px; }
-
-
 /* Footer - Social Links */
 .footer {
   position: absolute;

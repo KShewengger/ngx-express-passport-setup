@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { Interface, Enum } from "../../../../../shared/-index";
 
-import { UserService } from "../shared/user.service";
+import { UserService } from "../shared/service/user.service";
 
 
 @Component({
