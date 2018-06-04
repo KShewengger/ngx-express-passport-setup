@@ -1,6 +1,6 @@
 {
   "name": "ng4-express-passport-setup",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "npm install && cd public/passport-app && npm install",
