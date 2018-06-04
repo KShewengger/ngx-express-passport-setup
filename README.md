@@ -55,7 +55,9 @@ An angular & node express setup for passport authentication
    
    4. **_Local_**          
         > a. Create Database by default the app used `passport` db name.
+        
         > b. Run sequelize migration scripts `$ npm run sq:migrate:all`
+        
         > c. Credentials are placed on `/config/database.ts` or `.env` if environment variables will be used.
 2. Replace all credentials on `.env` file
 3. Run `$ npm run build` to install all node modules from backend  & frontend
