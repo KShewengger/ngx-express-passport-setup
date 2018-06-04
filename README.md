@@ -35,6 +35,9 @@ An angular & node express setup for passport authentication
           - they are the routes created from our system
         
         > c. Your ClientID and ClientSecret will then be shown in modal form or you can access it anytime by clicking the credential you created on the list.
+        
+        > d. Credentials are placed on `/config/passport.credential.ts` or `.env` if environment variables will be used.
+   
    3. **_Twitter_**
         > a. Go to https://apps.twitter.com/, Click `Create New App`
         
@@ -45,6 +48,8 @@ An angular & node express setup for passport authentication
         
         > d. Go to `Permissions` tab > `Additional Permissions` and check `Request email addresses from users` - for us to be able to fetch the users'
         email address. 
+        
+        > e. Credentials are placed on `/config/passport/credential.ts` or `.env` if environment variables will be used.
         
         > NOTE: Twitter doesn't support localhost on their url so we use 127.0.0.1 instead.
    

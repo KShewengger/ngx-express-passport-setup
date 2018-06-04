@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "npm install && cd public/passport-app && npm install",
     "ng-start": "cd ./public/passport-app && tsc && npm start",
     "express-start": "tsc-watch --onSuccess 'nodemon ./bin/www'",
     "sq:migrate:all": "sequelize db:migrate",
