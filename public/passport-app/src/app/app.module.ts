@@ -14,7 +14,7 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 import { AlertMessageComponent } from "./shared/components/alert-message/alert-message.component";
 import { SocialButtonComponent } from "./shared/components/social-button/social-button.component";
 
-import { UserService } from "./shared/service/user.service";
+import { UserService } from "./shared/services/user.service";
 
 import { UserInitializeResolver } from "./initialize/initialize-resolver.service";
 

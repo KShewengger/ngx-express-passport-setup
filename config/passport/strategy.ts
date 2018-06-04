@@ -4,7 +4,7 @@ import * as passportTwitter from "passport-twitter";
 import * as passportFacebook from "passport-facebook";
 import * as passportLocal from "passport-local";
 
-import { Credential, Common } from "../-index";
+import { Credential, DbQuery } from "../-index";
 
 const GoogleStrategy   = passportGoogleAuth.OAuth2Strategy;
 const TwitterStrategy  = passportTwitter.Strategy;
@@ -83,8 +83,8 @@ export function initializeLocalStrategy(passport: passport.PassportStatic): void
  */
 function processUser(profile: any, done: Function, isLocal?: boolean): any {
   return process.nextTick(async () => {
-    if (isLocal) await Common.findUserByEmailPassword(profile, done);
-    else await Common.findOrCreateUser(profile, done);
+    if (isLocal) await DbQuery.findUserByEmailPassword(profile, done);
+    else await DbQuery.findOrCreateUser(profile, done);
   });
 }
 

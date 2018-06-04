@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { UserService } from "../shared/service/user.service";
+import { UserService } from "../shared/services/user.service";
 
 import { Interface, Enum } from "../../../../../shared/-index";
 
