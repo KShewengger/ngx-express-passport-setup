@@ -1,7 +1,6 @@
 {
   "name": "ng4-express-passport-setup",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "build": "npm install && cd public/passport-app && npm install",
     "ng-start": "cd ./public/passport-app && tsc && npm start",
@@ -11,6 +10,30 @@
     "sq:migrate:undo:all": "sequelize db:migrate:undo:all",
     "start": "concurrently \"npm run express-start\"  \"npm run ng-start\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KShewengerz/ngx-express-passport-setup.git"
+  },
+  "keywords": [
+    "angular",
+    "typescript",
+    "express",
+    "sequelize",
+    "sequelize-typescript",
+    "postgresql",
+    "passport sequelize",
+    "passport postgresql",
+    "passport-google-oauth",
+    "passport-facebook",
+    "passport-twitter",
+    "passport-local"
+  ],
+  "author": "Kristy Mae Almuete <kristyalmuete@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KShewengerz/ngx-express-passport-setup/issues"
+  },
+  "homepage": "https://github.com/KShewengerz/ngx-express-passport-setup#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
