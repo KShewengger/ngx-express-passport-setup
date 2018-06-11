@@ -3,6 +3,17 @@
 
 An angular & node express setup for passport authentication
 
+#### App's Example Google+ Step By Step Authentication Process (supported by screenshots)
+Step 1: Login Page
+
+![Login Page](https://github.com/KShewengerz/ngx-express-passport-setup/blob/master/shared/images/login.png)
+
+Step 2: 
+
+Step 3:
+
+![Homepage](https://github.com/KShewengerz/ngx-express-passport-setup/blob/master/shared/images/homepage.png)
+
 
 #### Main dev tools used:
 `Angular 5` `NodeJS` `ExpressJS` `Typescript` `ES6` `PassportJS` `PostgreSQL` `SequelizeJS` `Sequelize-Typescript`
