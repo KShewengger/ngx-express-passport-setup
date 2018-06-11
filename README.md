@@ -24,6 +24,7 @@ An angular & node express setup for passport authentication.
 #### How to run
 
 1. Create your own clientID and clientSecret on the provider you want to test
+
    `Note: Creating a database is required for storing user information provided by any passport strategy`
       
    1. **_Local_**          
