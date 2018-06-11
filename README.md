@@ -11,7 +11,7 @@ An angular & node express setup for passport authentication
 #### Supported Passport Authentication
 `Facebook` `Google+` `Twitter` `Local`
 
-#### Clone the project don't npm install
+#### Clone the project
 `$ git clone https://github.com/KShewengerz/ngx-express-passport-setup`
 
 #### How to run
