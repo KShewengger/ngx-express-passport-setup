@@ -1,6 +1,6 @@
 {
   "name": "ngx-express-passport-setup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "build": "npm install && cd public/passport-app && npm install",
     "ng-start": "cd ./public/passport-app && tsc && npm start",
