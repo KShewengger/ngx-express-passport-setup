@@ -1,18 +1,14 @@
 # ngx-express-passport-setup
 
 
-An angular & node express setup for passport authentication
+An angular & node express setup for passport authentication.
 
-#### App's Example Google+ Step By Step Authentication Process (supported by screenshots)
-Step 1: Login Page
+
+> A simple application that only has login page (with passport strategies) and home page (for showing user information fetched from the selected strategy e.g Google+, Facebook, Twitter or Local)
+
+> A direct example guide for PassportJS users.
 
 ![Login Page](https://github.com/KShewengerz/ngx-express-passport-setup/blob/master/shared/images/login.png)
-
-Step 2: 
-
-Step 3:
-
-![Homepage](https://github.com/KShewengerz/ngx-express-passport-setup/blob/master/shared/images/homepage.png)
 
 
 #### Main dev tools used:
@@ -28,7 +24,16 @@ Step 3:
 #### How to run
 
 1. Create your own clientID and clientSecret on the provider you want to test
-   1. **_Facebook_**
+   `Note: Creating a database is required for storing user information provided by any passport strategy`
+      
+   1. **_Local_**          
+      > a. Create Database by default the app used `passport` db name.
+      
+      > b. Run sequelize migration scripts `$ npm run sq:migrate:all`
+      
+      > c. Credentials are placed on `/config/database.ts` or `.env` if environment variables will be used.
+   
+   2. **_Facebook_**
         > a. Go to https://developers.facebook.com/apps, Click `Add New App`
           
         > b. Enter your app's information, Click `Create App ID`
@@ -36,7 +41,7 @@ Step 3:
         > c. Access your ClientID and ClientSecret on `Sidebar's Settings Menu > Basic`   
         
         > d. Credentials are placed on `/config/passport/credential.ts` or `.env` if environment variables will be used.
-   2. **_Google+_**
+   3. **_Google+_**
         > a. Go to https://console.developers.google.com/, Click `Enable APIs and Services` beside Dashboard label
         
         > b. Search for Google+ on the search bar and Click `Enable`.
@@ -51,7 +56,7 @@ Step 3:
         
         > d. Credentials are placed on `/config/passport.credential.ts` or `.env` if environment variables will be used.
    
-   3. **_Twitter_**
+   4. **_Twitter_**
         > a. Go to https://apps.twitter.com/, Click `Create New App`
         
         > b. Fill the form with information about your app. For these fields; **Website** supply `http://127.0.0.1:3000/` and **Callback URL**
@@ -66,12 +71,7 @@ Step 3:
         
         > NOTE: Twitter doesn't support localhost on their url so we use 127.0.0.1 instead.
    
-   4. **_Local_**          
-        > a. Create Database by default the app used `passport` db name.
-        
-        > b. Run sequelize migration scripts `$ npm run sq:migrate:all`
-        
-        > c. Credentials are placed on `/config/database.ts` or `.env` if environment variables will be used.
+  
 2. Replace all credentials on `.env` file
 3. Run `$ npm run build` to install all node modules from backend  & frontend
 4. Run `$ npm start` to run the system.
