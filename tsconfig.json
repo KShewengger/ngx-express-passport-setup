@@ -15,6 +15,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@app/*": ["./public/app/src/app/*"],
+      "@home/*": ["./public/app/src/app/home/*"],
       "@app/config": ["config"],
       "@app/controllers": ["controllers"],
       "@app/enums": ["shared/enums"],
