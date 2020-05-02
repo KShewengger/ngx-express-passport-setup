@@ -7,10 +7,18 @@
     "sourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "outDir": "dist",
     "baseUrl": ".",
+    "types": [
+      "jasmine"
+    ],
     "allowSyntheticDefaultImports": true,
     "paths": {
+      "@app/*": ["./public/app/src/app/*"],
+      "@app/config": ["config"],
+      "@app/controllers": ["controllers"],
+      "@app/enums": ["shared/enums"],
+      "@app/interfaces": ["shared/interfaces"],
       "*": [
         "node_modules/*",
         "src/types/*"

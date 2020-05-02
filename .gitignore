@@ -1,9 +1,8 @@
+# dependencies
+/node_modules
 
 # IDEs and editors
 /.idea
 
-# environment variables
-.env
-
-# dependencies
-/node_modules
+# compiled output
+/dist

@@ -37,12 +37,12 @@
       "check-whitespace"
     ],
     "quotemark": [
-      true,
+      false,
       "double"
     ],
     "semicolon": true,
     "triple-equals": [
-      false,
+      true,
       "allow-null-check"
     ],
     "typedef": [
