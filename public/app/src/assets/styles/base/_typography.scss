@@ -1,0 +1,13 @@
+@import 'abstracts/mixins';
+
+
+// FONT FAMILY
+$fallback: 'Helvetica', 'Arial', sans-serif;
+$nunito: Nunito-Regular, #{$fallback};
+$nunito-light: Nunito-Light, #{$fallback};
+$nunito-bold: Nunito-SemiBold, #{$fallback};
+
+// SETUP TYPOGRAPHY
+@include font-face('Nunito-Regular', 'inter');
+@include font-face('Nunito-Light', 'inter');
+@include font-face('Nunito-Bold', 'inter');

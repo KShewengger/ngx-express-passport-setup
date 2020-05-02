@@ -1,0 +1,31 @@
+@import 'typography';
+
+
+// GENERAL
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+// HTML
+html { height: 100vh; }
+
+// BODY
+body {
+  height: 100vh;
+  font-family: $nunito;
+}
+
+// ANCHOR TAGS
+a {
+  color: inherit;
+
+  &, &:hover {
+    text-decoration: unset;
+    color: inherit;
+  }
+}
+
+// PARAGRAPH
+p { margin-bottom: 0; }

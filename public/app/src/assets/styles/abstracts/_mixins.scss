@@ -1,0 +1,16 @@
+// MEDIA QUERY
+@mixin media($type, $breakpoint) {
+  @media screen and (#{$type}: $breakpoint) {
+    @content;
+  }
+}
+
+// FONT FACE
+@mixin font-face($name, $locationType) {
+  $location: '/assets/fonts/Nunito';
+
+  @font-face {
+    font-family: $name;
+    src: url("#{$location}/#{$name}.ttf") format("truetype");
+  }
+}
