@@ -1,0 +1,55 @@
+@import 'base/colors';
+@import 'base/typography';
+
+
+.home {
+  height: 100vh;
+
+  &__header {
+    margin-bottom: 4rem;
+
+    p {
+      font-family: $nunito-bold;
+      font-size: 1.8rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+  }
+
+  &__logo {
+    top: 10rem;
+    background-color: $yellow-50;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 100%;
+
+    span {
+      color: $yellow-100;
+      font-size: 3.5rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    width: 75rem;
+    max-width: 100%;
+    border-radius: 1.5rem;
+    border: 1px solid $purple-300;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28);
+
+    & > div { padding: 1rem; }
+  }
+
+  &__sign-up {
+    background-color: $purple-200;
+    color: white;
+  }
+
+  &__login {
+    background: white;
+  }
+
+}

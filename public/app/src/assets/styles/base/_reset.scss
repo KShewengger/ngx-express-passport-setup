@@ -1,3 +1,4 @@
+@import 'colors';
 @import 'typography';
 
 
@@ -15,6 +16,7 @@ html { height: 100vh; }
 body {
   height: 100vh;
   font-family: $nunito;
+  background-color: $purple-100;
 }
 
 // ANCHOR TAGS
