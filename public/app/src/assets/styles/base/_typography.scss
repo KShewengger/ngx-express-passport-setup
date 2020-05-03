@@ -5,7 +5,7 @@
 $fallback: 'Helvetica', 'Arial', sans-serif;
 $nunito: Nunito-Regular, #{$fallback};
 $nunito-light: Nunito-Light, #{$fallback};
-$nunito-bold: Nunito-SemiBold, #{$fallback};
+$nunito-bold: Nunito-Bold, #{$fallback};
 
 // SETUP TYPOGRAPHY
 @include font-face('Nunito-Regular', 'inter');

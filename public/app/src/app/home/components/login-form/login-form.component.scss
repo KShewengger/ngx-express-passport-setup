@@ -1,5 +1,45 @@
+@import 'base/colors';
+@import 'base/typography';
 
 
 .login-form {
+
+  h1 { color: $gray; }
+
+  &__border {
+    margin: 2rem 0 2.3rem 0;
+
+    p, span { position: relative; }
+
+    p { border-bottom: 0.0625rem solid transparentize($gray, 0.8); }
+
+    span {
+      font-family: $nunito-bold;
+      color: $pink-100;
+      background-color: white;
+      top: 0.75rem;
+      padding: 0 1.25rem;
+    }
+  }
+
+  &__social-icons {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
+
+      &:first-child {
+        width: 2.3rem;
+        height: 2.25rem;
+        position: relative;
+        top: 0.05rem;
+      }
+
+      &:nth-child(n + 2) {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
 
 }

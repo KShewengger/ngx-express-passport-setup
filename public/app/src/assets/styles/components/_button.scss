@@ -11,12 +11,12 @@
   font-family: $nunito-bold;
   letter-spacing: 0.1rem;
   font-size: 1.05rem;
+  color: white;
 
-  &:hover { color: inherit; }
+  &:hover { color: white !important; }
 
-  &__primary {
-    color: white;
-    background-color: #eb4b88;
-  }
+  &__primary { background-color: $pink-100; }
+
+  &__secondary { background-color: $purple-100; }
 
 }

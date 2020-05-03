@@ -1,5 +1,32 @@
 <div class="login-form">
 
-  <h1>Login</h1>
+  <h1 class="mb-5">Sign In</h1>
+
+  <div class="form-group"
+       *ngFor="let model of models">
+    <input class="form-control"
+           [type]="model.type"
+           [placeholder]="model.placeholder">
+  </div>
+
+  <button class="btn btn__secondary">Sign In</button>
+
+  <div class="login-form__border text-center">
+    <p>
+      <span>OR</span>
+    </p>
+  </div>
+
+  <div class="login-form__social-icons text-center">
+    <img src="assets/images/google+.png"
+         alt="google+">
+
+    <img src="assets/images/facebook.png"
+         alt="facebook"
+         class="mx-4">
+
+    <img src="assets/images/twitter.png"
+         alt="twitter">
+  </div>
 
 </div>
