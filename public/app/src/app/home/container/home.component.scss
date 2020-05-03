@@ -1,21 +1,8 @@
 @import 'base/colors';
-@import 'base/typography';
 
 
 .home {
   height: 100vh;
-
-  &__header {
-    margin-bottom: 4rem;
-
-    p {
-      font-family: $nunito-bold;
-      font-size: 1.8rem;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-    }
-  }
 
   &__logo {
     top: 10rem;
@@ -23,6 +10,7 @@
     width: 7rem;
     height: 7rem;
     border-radius: 100%;
+    margin-bottom: 4rem;
 
     span {
       color: $yellow-100;
@@ -40,7 +28,7 @@
     overflow: hidden;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28);
 
-    & > div { padding: 1rem; }
+    & > div { padding: 2rem; }
   }
 
   &__sign-up {

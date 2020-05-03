@@ -1,0 +1,22 @@
+@import 'base/colors';
+@import 'base/typography';
+
+
+.btn {
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  padding: 0.6rem;
+  font-family: $nunito-bold;
+  letter-spacing: 0.1rem;
+  font-size: 1.05rem;
+
+  &:hover { color: inherit; }
+
+  &__primary {
+    color: white;
+    background-color: #eb4b88;
+  }
+
+}

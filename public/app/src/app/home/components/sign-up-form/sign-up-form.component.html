@@ -1,5 +1,14 @@
 <div class="sign-up-form">
 
-  <h1>Signup</h1>
+  <h1 class="mb-5">Sign Up</h1>
+
+  <div class="form-group"
+       *ngFor="let model of models">
+    <input class="form-control"
+           [type]="model.type"
+           [placeholder]="model.placeholder">
+  </div>
+
+  <button class="btn btn__primary">Register</button>
 
 </div>
